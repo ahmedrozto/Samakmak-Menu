@@ -14,10 +14,7 @@ color:#222;
 height:100vh;
 
 background:
-linear-gradient(rgba(0,40,70,.55),
-rgba(0,40,70,.65)),
-url("background head");
-
+background-image: url("background.jpg");
 background-size:cover;
 background-position:center;
 display:flex;
