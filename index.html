@@ -2,197 +2,83 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سمكمك للمأكولات البحرية</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>سمكمك | Luxury Seafood</title>
 <link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-
-<!-- HEADER -->
+<nav id="navbar">
+  <div class="brand">سمكمك</div>
+  <div class="links">
+    <a href="#fish">الأسماك</a>
+    <a href="#sides">الأطباق الجانبية</a>
+    <a href="#salads">السلطات</a>
+    <a href="#drinks">المشروبات</a>
+  </div>
+</nav>
 
 <header class="hero">
-
-<div class="overlay">
-
-<img src="images/logo.png" class="logo" alt="سمكمك">
-
-<h1>مطعم سمكمك للمأكولات البحرية</h1>
-
-<p>
-أجود أنواع الأسماك والجمبري الطازج يومياً
-</p>
-
-<div class="buttons">
-
-<a href="tel:+201110997766" class="btn call">
-<i class="fa-solid fa-phone"></i>
-Call Us
-</a>
-
-<a href="https://maps.google.com"
-target="_blank"
-class="btn location">
-
-<i class="fa-solid fa-location-dot"></i>
-الفروع
-</a>
-
+<div class="overlay"></div>
+<!-- ضع الخلفية هنا: images/background-head.jpg -->
+<div class="heroBox">
+<!-- ضع اللوجو هنا: images/logo.png -->
+<img src="images/logo.png" class="logo">
+<h1>مطعم سمكمك</h1>
+<p>Fresh Taste • Premium Quality</p>
+<a class="heroBtn" href="#menu">استعرض المنيو</a>
 </div>
-
-</div>
-
 </header>
 
-<!-- MENU -->
-
-<section class="menu">
-
-<h2>🐟 الأسماك</h2>
-
-<div class="cards">
-
-<div class="card">
-<img src="images/Karous-dish.jpg">
-<h3>قاروص</h3>
+<section id="menu">
+<div class="filters">
+<button onclick="filterCards('all')">الكل</button>
+<button onclick="filterCards('fish')">الأسماك</button>
+<button onclick="filterCards('sides')">الجانبية</button>
+<button onclick="filterCards('salads')">السلطات</button>
+<button onclick="filterCards('drinks')">المشروبات</button>
 </div>
 
-<div class="card">
-<img src="images/bouriy-dish.jpg">
-<h3>بوري</h3>
+<div class="grid">
+<!-- كرر البطاقات بنفس النمط -->
+<div class="card fish reveal">
+<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
+<h3>اسم السمكة</h3>
+<span>السعر</span>
 </div>
 
-<div class="card">
-<img src="images/denis-dish.jpg">
-<h3>دنيس</h3>
+<div class="card sides reveal">
+<img src="images/sides/side1.jpg" onclick="openLightbox(this.src)">
+<h3>اسم الصنف</h3>
+<span>السعر</span>
 </div>
 
-<div class="card">
-<img src="images/mousi-dish.jpg">
-<h3>موسى</h3>
+<div class="card salads reveal">
+<img src="images/salads/salad1.jpg" onclick="openLightbox(this.src)">
+<h3>اسم الصنف</h3>
+<span>السعر</span>
 </div>
 
-<div class="card">
-<img src="images/myaas-dish.jpg">
-<h3>مياس</h3>
+<div class="card drinks reveal">
+<img src="images/drinks/drink1.jpg" onclick="openLightbox(this.src)">
+<h3>اسم المشروب</h3>
+<span>السعر</span>
 </div>
-
-<div class="card">
-<img src="images/qar-fillet.jpg">
-<h3>قار فيليه</h3>
-<p>أضف السعر</p>
 </div>
-
-<div class="card">
-<img src="images/fried-bayad.jpg">
-<h3>بياض مقلي</h3>
-<p>أضف السعر</p>
-</div>
-
-</div>
-
 </section>
 
-<section class="menu">
-
-<h2>🦀 المأكولات البحرية</h2>
-
-<div class="cards">
-
-<div class="card">
-<img src="images/crab.jpg">
-<h3>كابوريا</h3>
-<p>أضف السعر</p>
-</div>
-
-<div class="card">
-<img src="images/squid.jpg">
-<h3>سبيط</h3>
-<p>أضف السعر</p>
-</div>
-
-<div class="card">
-<img src="images/botarikh.jpg">
-<h3>بطارخ</h3>
-<p>أضف السعر</p>
-</div>
-
-<div class="card">
-<img src="images/lobster.jpg">
-<h3>استاكوزا</h3>
-<p>أضف السعر</p>
-</div>
-
-</div>
-
+<section class="actions">
+<button>📞 تواصل معنا</button>
+<button>📍 الفروع</button>
 </section>
 
-<section class="menu">
+<a class="whatsapp" href="https://wa.me/201032122268">💬</a>
 
-<h2>🍤 الجمبري</h2>
+<footer>تم الإنشاء منذ عام 1982</footer>
 
-<div class="cards">
-
-<div class="card">
-<img src="images/grilled-shrimp.jpg">
-<h3>جمبري مشوي</h3>
-<p>أضف السعر</p>
+<div id="lightbox" onclick="closeLightbox()">
+<img id="lightboxImg">
 </div>
 
-<div class="card">
-<img src="images/butterfly-shrimp.jpg">
-<h3>جمبري بترفلاي</h3>
-<p>أضف السعر</p>
-</div>
-
-<div class="card">
-<img src="images/shrimp-mix.jpg">
-<h3>خلطة جمبري</h3>
-<p>أضف السعر</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="menu">
-
-<h2>🥤 المشروبات</h2>
-
-<div class="cards">
-
-<div class="card">
-<img src="images/drinks.jpg">
-<h3>مشروبات غازية</h3>
-<p>أضف السعر</p>
-</div>
-
-<div class="card">
-<img src="images/drinks.jpg">
-<h3>عصائر فريش</h3>
-<p>أضف السعر</p>
-</div>
-
-<div class="card">
-<img src="images/drinks.jpg">
-<h3>مياه معدنية</h3>
-<p>أضف السعر</p>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-<p>© جميع الحقوق محفوظة لمطعم سمكمك</p>
-</footer>
-
+<script src="script.js"></script>
 </body>
 </html>
