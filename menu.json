@@ -1,26 +1,26 @@
 {
-  "fish": [
-    {
-      "name": "قاروق",
-      "price": 1000,
-      "image": "images/fish/karous-dish.jpg"
-    },
-     {
-      "name": "دنيس",
-      "price": 1000,
-      "image": "images/fish/denis-dish.jpg"
-    },
-    {
-      "name": "موسي",
-      "price": 1700,
-      "image": "images/fish/mousi-dish.jpg"
-    },
-    {
-      "name": "بورى",
-      "price": 1000,
-      "image": "images/fish/bouriy-dish.jpg"
-    }, 
- ],
+ "fish": [
+  {
+    "name": "قاروق",
+    "price": 1000,
+    "image": "images/fish/karous-dish.jpg"
+  },
+  {
+    "name": "دنيس",
+    "price": 1000,
+    "image": "images/fish/denis-dish.jpg"
+  },
+  {
+    "name": "موسي",
+    "price": 1700,
+    "image": "images/fish/mousi-dish.jpg"
+  },
+  {
+    "name": "بورى",
+    "price": 1000,
+    "image": "images/fish/bouriy-dish.jpg"
+  }
+],
   "sides": [
     {
       "name": "أرز صيادية",
