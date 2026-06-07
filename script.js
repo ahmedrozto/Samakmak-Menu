@@ -1,37 +1,12 @@
-fetch("menu.json")
-.then(res => res.json())
-.then(data => {
+let slides = document.querySelectorAll(".slide");
+let index = 0;
 
-    const container = document.getElementById("menuContainer");
+setInterval(() => {
 
-    function createCategory(title, items, hasImage){
+    slides[index].classList.remove("active");
 
-        let html = `<div class="category"><h3>${title}</h3>`;
+    index = (index + 1) % slides.length;
 
-        items.forEach(item => {
+    slides[index].classList.add("active");
 
-            html += `<div class="item">`;
-
-            html += `<div class="item-left">`;
-
-            if(hasImage){
-                html += `<img src="${item.image}">`;
-            }
-
-            html += `<span>${item.name}</span>`;
-            html += `</div>`;
-
-            html += `<span>${item.price ? item.price + " جنيه" : ""}</span>`;
-            html += `</div>`;
-        });
-
-        html += `</div>`;
-        container.innerHTML += html;
-    }
-
-    createCategory("🐟 الأسماك", data.fish, true);
-    createCategory("🍤 الأطباق الجانبية", data.sides, true);
-    createCategory("🥗 السلطات", data.salads, false);
-    createCategory("🥤 المشروبات", data.drinks, false);
-
-});
+}, 3000);
