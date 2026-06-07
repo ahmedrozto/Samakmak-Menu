@@ -1,0 +1,37 @@
+{
+  "fish": [
+    {
+      "name": "دنيس مشوي",
+      "price": 220,
+      "image": "assets/fish/denis.jpg"
+    },
+    {
+      "name": "بلطي مشوي",
+      "price": 180,
+      "image": "assets/fish/bolty.jpg"
+    }
+  ],
+
+  "sides": [
+    {
+      "name": "أرز صيادية",
+      "price": 40,
+      "image": "assets/sides/rice.jpg"
+    },
+    {
+      "name": "بطاطس",
+      "price": 35,
+      "image": "assets/sides/fries.jpg"
+    }
+  ],
+
+  "salads": [
+    { "name": "سلطة خضراء", "price": 25 },
+    { "name": "طحينة", "price": 15 }
+  ],
+
+  "drinks": [
+    { "name": "بيبسي", "price": 20 },
+    { "name": "مياه", "price": 10 }
+  ]
+}
