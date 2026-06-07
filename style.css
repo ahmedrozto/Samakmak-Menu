@@ -26,6 +26,40 @@ z-index:999;
 
 .logo{height:50px}
 
+/* صندوق اللوجو مع الخلفية */
+.logo-box{
+    width:180px;
+    height:180px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    /* الخلفية اللي انت عايزها */
+    background:url("assets/logo-bg.jpg") center/cover no-repeat;
+
+    border-radius:50%;
+    position:relative;
+
+    box-shadow:0 0 30px rgba(0,0,0,.5);
+}
+
+/* تغبيش خفيف فوق الخلفية */
+.logo-box::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    border-radius:50%;
+}
+
+/* اللوجو نفسه */
+.main-logo{
+    width:110px;
+    position:relative;
+    z-index:2;
+}
+
 .links a{
 color:white;
 margin:0 10px;
