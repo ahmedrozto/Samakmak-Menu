@@ -1,236 +1,455 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>سمكمك | Luxury Seafood</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سمكمك | مأكولات بحرية طازجة</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f5f8fb;
+color:#222;
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:15px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(10px);
+z-index:999;
+}
+
+.logo img{
+height:65px;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:700;
+}
+
+header{
+height:100vh;
+
+/* صورة البحر */
+background:url("assets/hero.jpg");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+position:relative;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.45);
+}
+
+.hero{
+position:relative;
+z-index:2;
+color:white;
+}
+
+.hero img{
+width:180px;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:4rem;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:1.3rem;
+}
+
+section{
+padding:90px 10%;
+}
+
+.section-title{
+text-align:center;
+font-size:2.5rem;
+margin-bottom:50px;
+color:#007ea7;
+}
+
+/* ================= */
+/* القوائم */
+/* ================= */
+
+.menu-section{
+margin-bottom:70px;
+}
+
+.menu-section h3{
+font-size:2rem;
+margin-bottom:25px;
+color:#0099cc;
+}
+
+.food-grid{
+display:grid;
+gap:20px;
+}
+
+.food-item{
+display:flex;
+align-items:center;
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.food-item img{
+width:140px;
+height:140px;
+object-fit:cover;
+border-radius:15px;
+margin-left:20px;
+}
+
+.food-info{
+flex:1;
+}
+
+.food-info h4{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.food-info p{
+color:#666;
+margin-bottom:10px;
+}
+
+.price{
+font-size:22px;
+font-weight:bold;
+color:#0099cc;
+}
+
+.simple-menu{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+list-style:none;
+}
+
+.simple-menu li{
+display:flex;
+justify-content:space-between;
+padding:15px 0;
+border-bottom:1px dashed #ccc;
+}
+
+.simple-menu li:last-child{
+border:none;
+}
+
+footer{
+background:#012b3a;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:50px;
+}
+
+@media(max-width:768px){
+
+.food-item{
+flex-direction:column;
+text-align:center;
+}
+
+.food-item img{
+margin:0 0 15px;
+width:100%;
+height:220px;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+nav ul{
+display:none;
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
-<nav id="navbar">
-  <div class="brand">سمكمك</div>
-  <div class="links">
-    <a href="#fish">الأسماك</a>
-    <a href="#sides">الأطباق الجانبية</a>
-    <a href="#salads">السلطات</a>
-    <a href="#drinks">المشروبات</a>
-  </div>
+
+<nav>
+
+<div class="logo">
+
+<!-- اللوجو -->
+<img src="assets/logo.png">
+
+</div>
+
+<ul>
+<li><a href="#menu">المنيو</a></li>
+<li><a href="#contact">تواصل معنا</a></li>
+</ul>
+
 </nav>
 
-<header class="hero">
+<header>
+
 <div class="overlay"></div>
-<!-- ضع الخلفية هنا: images/background-head.jpg -->
-<div class="heroBox">
-<!-- ضع اللوجو هنا: images/logo.png -->
-<img src="images/logo.png" class="logo">
-<h1>Samakmak Resaurant</h1>
-<p>Fresh Taste • Premium Quality</p>
-<a class="heroBtn" href="#menu">View Menu</a>
+
+<div class="hero">
+
+<!-- اللوجو -->
+<img src="assets/logo.png">
+
+<h1>مطعم سمكمك</h1>
+
+<p>
+أفضل المأكولات البحرية الطازجة يومياً
+</p>
+
 </div>
+
 </header>
 
 <section id="menu">
-<div class="filters">
-<button onclick="filterCards('all')">Home</button>
-<button onclick="filterCards('fish')">الأسماك</button>
-<button onclick="filterCards('sides')">الاطباق الجانبية</button>
-<button onclick="filterCards('salads')">السلطات</button>
-<button onclick="filterCards('drinks')">المشروبات</button>
+
+<h2 class="section-title">
+قائمة الطعام
+</h2>
+
+<!-- =========================== -->
+<!-- الأسماك -->
+<!-- =========================== -->
+
+<div class="menu-section">
+
+<h3>🐟 الأسماك</h3>
+
+<div class="food-grid">
+
+<!-- أضف أو عدل السمكة من هنا -->
+
+<div class="food-item">
+
+<img src="assets/fish/denis.jpg">
+
+<div class="food-info">
+
+<h4>دنيس مشوي</h4>
+
+<p>سمك دنيس مشوي على الفحم</p>
+
+<div class="price">
+220 جنيه
 </div>
 
-<div class="grid">
-<!-- كرر البطاقات بنفس النمط -->
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>قاروص</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">  
-<img src="images/fish/fish2.jpg" onclick="openLightbox(this.src)">
-<h3>دنيس</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal"> 
-<img src="images/fish/fish3.jpg" onclick="openLightbox(this.src)">
-<h3>3</h3>
-<span>1000ج</span>
+<div class="food-item">
+
+<img src="assets/fish/bolty.jpg">
+
+<div class="food-info">
+
+<h4>بلطي مشوي</h4>
+
+<p>بلطي طازج يومياً</p>
+
+<div class="price">
+180 جنيه
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>4</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>5</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>6</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>7</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>8</h3>
-<span>1000ج</span>
+<!-- =========================== -->
+<!-- الأطباق الجانبية -->
+<!-- =========================== -->
+
+<div class="menu-section">
+
+<h3>🍤 الأطباق الجانبية</h3>
+
+<div class="food-grid">
+
+<div class="food-item">
+
+<img src="assets/sides/rice.jpg">
+
+<div class="food-info">
+
+<h4>أرز صيادية</h4>
+
+<p>أرز صيادية بالطريقة الخاصة</p>
+
+<div class="price">
+40 جنيه
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>9</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>10</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>11</h3>
-<span>1000ج</span>
+<div class="food-item">
+
+<img src="assets/sides/fries.jpg">
+
+<div class="food-info">
+
+<h4>بطاطس مقلية</h4>
+
+<p>بطاطس مقرمشة</p>
+
+<div class="price">
+35 جنيه
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>12</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>13</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>14</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>15</h3>
-<span>1000ج</span>
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>16</h3>
-<span>1000ج</span>
+<!-- =========================== -->
+<!-- السلطات -->
+<!-- =========================== -->
+
+<div class="menu-section">
+
+<h3>🥗 السلطات</h3>
+
+<ul class="simple-menu">
+
+<li>
+<span>سلطة خضراء</span>
+<span>25 جنيه</span>
+</li>
+
+<li>
+<span>سلطة طحينة</span>
+<span>15 جنيه</span>
+</li>
+
+<li>
+<span>سلطة بابا غنوج</span>
+<span>20 جنيه</span>
+</li>
+
+</ul>
+
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>17</h3>
-<span>1000ج</span>
+<!-- =========================== -->
+<!-- المشروبات -->
+<!-- =========================== -->
+
+<div class="menu-section">
+
+<h3>🥤 المشروبات</h3>
+
+<ul class="simple-menu">
+
+<li>
+<span>بيبسي</span>
+<span>20 جنيه</span>
+</li>
+
+<li>
+<span>سفن أب</span>
+<span>20 جنيه</span>
+</li>
+
+<li>
+<span>مياه معدنية</span>
+<span>10 جنيه</span>
+</li>
+
+</ul>
+
 </div>
 
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>18</h3>
-<span>1000ج</span>
-</div>
-
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>19</h3>
-<span>1000ج</span>
-</div>
-
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>20</h3>
-<span>1000ج</span>
-</div>
-
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>21</h3>
-<span>1000ج</span>
-</div>
-
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>22</h3>
-<span>1000ج</span>
-</div>
-
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>23</h3>
-<span>1000ج</span>
-</div>
-
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>24</h3>
-<span>1000ج</span>
-</div>
-
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>25</h3>
-<span>1000ج</span>
-</div>
-
-<div class="card fish reveal">
-<img src="images/fish/fish1.jpg" onclick="openLightbox(this.src)">
-<h3>26</h3>
-<span>1000ج</span>
-</div>
-  
-</div>
-  
-<div class="card sides reveal">
-<img src="images/sides/side1.jpg" onclick="openLightbox(this.src)">
-<h3>اسم الصنف</h3>
-<span>السعر</span>
-</div>
-
-<div class="card salads reveal">
-<img src="images/salads/salad1.jpg" onclick="openLightbox(this.src)">
-<h3>اسم الصنف</h3>
-<span>السعر</span>
-</div>
-
-<div class="card drinks reveal">
-<img src="images/drinks/drink1.jpg" onclick="openLightbox(this.src)">
-<h3>اسم المشروب</h3>
-<span>السعر</span>
-</div>
-</div>
 </section>
 
-<section class="actions">
-<button>📞 تواصل معنا</button>
-<button>📍 الفروع</button>
-</section>
+<section id="contact">
 
-<a class="whatsapp" href="https://wa.me/201032122268">💬</a>
+<h2 class="section-title">
+تواصل معنا
+</h2>
 
-<footer>تم الإنشاء منذ عام 1982</footer>
+<div style="text-align:center;line-height:2;font-size:20px">
 
-<div id="lightbox" onclick="closeLightbox()">
-<img id="lightboxImg">
+📍 أضف عنوان المطعم هنا
+
+<br>
+
+📞 أضف رقم الهاتف هنا
+
+<br>
+
+📧 أضف البريد الإلكتروني هنا
+
 </div>
 
-<script src="script.js"></script>
+</section>
+
+<footer>
+
+© جميع الحقوق محفوظة - مطعم سمكمك
+
+</footer>
+
 </body>
 </html>
