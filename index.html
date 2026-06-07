@@ -2,454 +2,96 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>سمكمك | مأكولات بحرية طازجة</title>
+<title>سمكمك</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Cairo',sans-serif;
-scroll-behavior:smooth;
-}
-
-body{
-background:#f5f8fb;
-color:#222;
-}
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-padding:15px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:rgba(0,0,0,.65);
-backdrop-filter:blur(10px);
-z-index:999;
-}
-
-.logo img{
-height:65px;
-}
-
-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-weight:700;
-}
-
-header{
-height:100vh;
-
-/* صورة البحر */
-background:url("assets/hero.jpg");
-
-background-size:cover;
-background-position:center;
-
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-
-position:relative;
-}
-
-.overlay{
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.45);
-}
-
-.hero{
-position:relative;
-z-index:2;
-color:white;
-}
-
-.hero img{
-width:180px;
-margin-bottom:20px;
-}
-
-.hero h1{
-font-size:4rem;
-margin-bottom:10px;
-}
-
-.hero p{
-font-size:1.3rem;
-}
-
-section{
-padding:90px 10%;
-}
-
-.section-title{
-text-align:center;
-font-size:2.5rem;
-margin-bottom:50px;
-color:#007ea7;
-}
-
-/* ================= */
-/* القوائم */
-/* ================= */
-
-.menu-section{
-margin-bottom:70px;
-}
-
-.menu-section h3{
-font-size:2rem;
-margin-bottom:25px;
-color:#0099cc;
-}
-
-.food-grid{
-display:grid;
-gap:20px;
-}
-
-.food-item{
-display:flex;
-align-items:center;
-background:white;
-padding:15px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-.food-item img{
-width:140px;
-height:140px;
-object-fit:cover;
-border-radius:15px;
-margin-left:20px;
-}
-
-.food-info{
-flex:1;
-}
-
-.food-info h4{
-font-size:24px;
-margin-bottom:10px;
-}
-
-.food-info p{
-color:#666;
-margin-bottom:10px;
-}
-
-.price{
-font-size:22px;
-font-weight:bold;
-color:#0099cc;
-}
-
-.simple-menu{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-list-style:none;
-}
-
-.simple-menu li{
-display:flex;
-justify-content:space-between;
-padding:15px 0;
-border-bottom:1px dashed #ccc;
-}
-
-.simple-menu li:last-child{
-border:none;
-}
-
-footer{
-background:#012b3a;
-color:white;
-text-align:center;
-padding:30px;
-margin-top:50px;
-}
-
-@media(max-width:768px){
-
-.food-item{
-flex-direction:column;
-text-align:center;
-}
-
-.food-item img{
-margin:0 0 15px;
-width:100%;
-height:220px;
-}
-
-.hero h1{
-font-size:2.5rem;
-}
-
-nav ul{
-display:none;
-}
-
-}
-
-</style>
-
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
+    <img src="assets/logo.png" class="logo">
 
-<div class="logo">
-
-<!-- اللوجو -->
-<img src="assets/logo.png">
-
-</div>
-
-<ul>
-<li><a href="#menu">المنيو</a></li>
-<li><a href="#contact">تواصل معنا</a></li>
-</ul>
-
+    <div class="links">
+        <a href="#menu">المنيو</a>
+        <a href="#branches">الفروع</a>
+        <a href="#contact">تواصل</a>
+    </div>
 </nav>
 
+<!-- HERO -->
 <header>
+    <div class="overlay"></div>
 
-<div class="overlay"></div>
+    <div class="hero">
+        <img src="assets/logo.png">
+        <h1>مطعم سمكمك</h1>
+        <p>أجود المأكولات البحرية الطازجة</p>
 
-<div class="hero">
-
-<!-- اللوجو -->
-<img src="assets/logo.png">
-
-<h1>مطعم سمكمك</h1>
-
-<p>
-أفضل المأكولات البحرية الطازجة يومياً
-</p>
-
-</div>
-
+        <!-- واتساب -->
+        <a class="btn" href="https://wa.me/201110997766" target="_blank">
+            اطلب الآن واتساب
+        </a>
+    </div>
 </header>
 
+<!-- MENU -->
 <section id="menu">
+    <h2>المنيو</h2>
 
-<h2 class="section-title">
-قائمة الطعام
-</h2>
+    <div id="menuContainer"></div>
+</section>
 
-<!-- =========================== -->
-<!-- الأسماك -->
-<!-- =========================== -->
+<!-- BRANCHES -->
+<section id="branches">
 
-<div class="menu-section">
+<h2>الفروع</h2>
 
-<h3>🐟 الأسماك</h3>
+<div class="branch">
 
-<div class="food-grid">
+<h3>📍 6 أكتوبر</h3>
+<p>غرب سوميد - الممشى السياحي - المحور المركزي</p>
 
-<!-- أضف أو عدل السمكة من هنا -->
+<p>01110997766</p>
+<p>01032122268</p>
+<p>01026436005</p>
+<p>01117444571</p>
 
-<div class="food-item">
-
-<img src="assets/fish/denis.jpg">
-
-<div class="food-info">
-
-<h4>دنيس مشوي</h4>
-
-<p>سمك دنيس مشوي على الفحم</p>
-
-<div class="price">
-220 جنيه
-</div>
+<a href="https://maps.app.goo.gl/QXfko5P3BHognLrh8?g_st=ac" target="_blank">الموقع على الخريطة</a>
 
 </div>
 
-</div>
+<div class="branch">
 
-<div class="food-item">
+<h3>📍 الإسكندرية - الأنفوشي</h3>
 
-<img src="assets/fish/bolty.jpg">
+<p>01011170040</p>
+<p>034811560</p>
+<p>034809523</p>
 
-<div class="food-info">
-
-<h4>بلطي مشوي</h4>
-
-<p>بلطي طازج يومياً</p>
-
-<div class="price">
-180 جنيه
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =========================== -->
-<!-- الأطباق الجانبية -->
-<!-- =========================== -->
-
-<div class="menu-section">
-
-<h3>🍤 الأطباق الجانبية</h3>
-
-<div class="food-grid">
-
-<div class="food-item">
-
-<img src="assets/sides/rice.jpg">
-
-<div class="food-info">
-
-<h4>أرز صيادية</h4>
-
-<p>أرز صيادية بالطريقة الخاصة</p>
-
-<div class="price">
-40 جنيه
-</div>
-
-</div>
-
-</div>
-
-<div class="food-item">
-
-<img src="assets/sides/fries.jpg">
-
-<div class="food-info">
-
-<h4>بطاطس مقلية</h4>
-
-<p>بطاطس مقرمشة</p>
-
-<div class="price">
-35 جنيه
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =========================== -->
-<!-- السلطات -->
-<!-- =========================== -->
-
-<div class="menu-section">
-
-<h3>🥗 السلطات</h3>
-
-<ul class="simple-menu">
-
-<li>
-<span>سلطة خضراء</span>
-<span>25 جنيه</span>
-</li>
-
-<li>
-<span>سلطة طحينة</span>
-<span>15 جنيه</span>
-</li>
-
-<li>
-<span>سلطة بابا غنوج</span>
-<span>20 جنيه</span>
-</li>
-
-</ul>
-
-</div>
-
-<!-- =========================== -->
-<!-- المشروبات -->
-<!-- =========================== -->
-
-<div class="menu-section">
-
-<h3>🥤 المشروبات</h3>
-
-<ul class="simple-menu">
-
-<li>
-<span>بيبسي</span>
-<span>20 جنيه</span>
-</li>
-
-<li>
-<span>سفن أب</span>
-<span>20 جنيه</span>
-</li>
-
-<li>
-<span>مياه معدنية</span>
-<span>10 جنيه</span>
-</li>
-
-</ul>
+<a href="https://maps.app.goo.gl/d86LYewwLvZBzVf36" target="_blank">الموقع على الخريطة</a>
 
 </div>
 
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 
-<h2 class="section-title">
-تواصل معنا
-</h2>
+<h2>تواصل معنا</h2>
 
-<div style="text-align:center;line-height:2;font-size:20px">
-
-📍 أضف عنوان المطعم هنا
-
-<br>
-
-📞 أضف رقم الهاتف هنا
-
-<br>
-
-📧 أضف البريد الإلكتروني هنا
-
-</div>
+<a href="https://www.facebook.com/share/1JwjiqyzAq/" target="_blank">
+فيسبوك المطعم
+</a>
 
 </section>
 
-<footer>
-
-© جميع الحقوق محفوظة - مطعم سمكمك
-
-</footer>
+<script src="script.js"></script>
 
 </body>
 </html>
