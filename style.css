@@ -109,3 +109,87 @@ padding:20px;
 margin-bottom:20px;
 border-radius:15px;
 }
+body{
+background: linear-gradient(135deg,#001f29,#003b4d);
+color:white;
+}
+
+/* NAV GLASS */
+nav{
+background:rgba(0,0,0,.4);
+backdrop-filter:blur(10px);
+}
+
+/* HERO LUXURY */
+header{
+position:relative;
+overflow:hidden;
+}
+
+/* SLIDER */
+.slider{
+position:absolute;
+inset:0;
+z-index:0;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+opacity:0;
+transition:1s;
+}
+
+.slide img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.slide.active{
+opacity:1;
+}
+
+/* OVERLAY */
+.overlay{
+background:rgba(0,0,0,.6);
+}
+
+/* CARDS LUXURY */
+.category{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.1);
+color:white;
+}
+
+/* ITEM */
+.item{
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#25D366;
+color:white;
+font-size:28px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+z-index:999;
+text-decoration:none;
+}
+
+/* HOVER EFFECT */
+.whatsapp-float:hover{
+transform:scale(1.1);
+transition:.3s;
+}
