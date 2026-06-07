@@ -3,22 +3,22 @@
   {
     "name": "قاروق",
     "price": 1000,
-    "image": "images/karous-dish.jpg"
+    "image": "images/fish/f1.jpg"
   },
   {
     "name": "دنيس",
     "price": 1000,
-    "image": "images/denis-dish.jpg"
+    "image": "images/fish/f2.jpg"
   },
   {
     "name": "موسي",
     "price": 1700,
-    "image": "images/mousi-dish.jpg"
+    "image": "images/fish/f3.jpg"
   },
   {
     "name": "بورى",
     "price": 1000,
-    "image": "images/bouriy-dish.jpg"
+    "image": "images/fish/f4.jpg"
   }
 ],
   "sides": [
