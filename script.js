@@ -6,32 +6,34 @@ fetch("menu.json")
 
     function render(title, items) {
 
-      let html = <div class="category"><h3>${title}</h3>;
+      if (!items || items.length === 0) return;
 
-      items.forEach(i => {
+      let html = `<div class="category"><h3>${title}</h3>`;
+
+      items.forEach(item => {
 
         html += `
           <div class="item">
 
             <div class="item-left">
 
-              ${i.image ? <img src="${i.image}"> : ""}
+              ${item.image ? `<img src="${item.image}" alt="${item.name_ar || item.name || ''}">` : ""}
 
               <span>
-                ${i.name_ar || i.name || i.name_en || "بدون اسم"}
+                ${item.name_ar || item.name || item.name_en || "بدون اسم"}
               </span>
 
             </div>
 
             <span>
-              ${i.price ? i.price + " جنيه" : ""}
+              ${item.price ? item.price + " جنيه" : ""}
             </span>
 
           </div>
         `;
       });
 
-      html += </div>;
+      html += `</div>`;
 
       container.innerHTML += html;
     }
@@ -46,13 +48,15 @@ fetch("menu.json")
 
 /* SLIDER */
 let slides = document.querySelectorAll(".slide");
-let i = 0;
+let currentSlide = 0;
 
 if (slides.length > 0) {
   setInterval(() => {
-    slides[i].classList.remove("active");
-    i = (i + 1) % slides.length;
-    slides[i].classList.add("active");
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    slides[currentSlide].classList.add("active");
   }, 3500);
 }
 
@@ -60,6 +64,9 @@ if (slides.length > 0) {
 window.addEventListener("scroll", () => {
   document.querySelectorAll(".title").forEach(el => {
     let pos = el.getBoundingClientRect().top;
-    if (pos < 600) el.classList.add("show");
+
+    if (pos < 600) {
+      el.classList.add("show");
+    }
   });
 });
