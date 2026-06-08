@@ -1,39 +1,231 @@
 {
  "fish": [
-  {
-    "name": "قاروق",
-    "price": 1000,
-    "image": "images/fish/f1.jpg"
-  },
-  {
-    "name": "دنيس",
-    "price": 1000,
-    "image": "images/fish/f2.jpg"
-  },
-  {
-    "name": "موسي",
-    "price": 1700,
-    "image": "images/fish/f3.jpg"
-  },
-  {
-    "name": "بورى",
-    "price": 1000,
-    "image": "images/fish/f4.jpg"
-  }
-],
-  "sides": [
     {
-      "name": "أرز صيادية",
-      "price": 40,
-      "image": "assets/sides/rice.jpg"
+      "name_ar": "قاروص",
+      "name_en": "Sea Bass",
+      "price": 1000,
+      "image": ""
     },
     {
-      "name": "بطاطس",
-      "price": 35,
-      "image": "assets/sides/fries.jpg"
+      "name_ar": "موسى",
+      "name_en": "Sole Fish",
+      "price": 1700,
+      "image": ""
+    },
+    {
+      "name_ar": "بربون",
+      "name_en": "Red Mullet",
+      "price": 1100,
+      "image": ""
+    },
+    {
+      "name_ar": "مرجان",
+      "name_en": "Red Snapper",
+      "price": 1200,
+      "image": ""
+    },
+    {
+      "name_ar": "هامور",
+      "name_en": "Blue Fish",
+      "price": 1000,
+      "image": ""
+    },
+    {
+      "name_ar": "وقار عادي",
+      "name_en": "Grouper",
+      "price": 1900,
+      "image": ""
+    },
+    {
+      "name_ar": "وقار حر",
+      "name_en": "Grouper (111)",
+      "price": 1900,
+      "image": ""
+    },
+    {
+      "name_ar": "ثعبان",
+      "name_en": "Sea Snake",
+      "price": 850,
+      "image": ""
+    },
+    {
+      "name_ar": "جندوفلي",
+      "name_en": "Clams",
+      "price": 750,
+      "image": ""
+    },
+    {
+      "name_ar": "بلح البحر",
+      "name_en": "Mussels",
+      "price": 1250,
+      "image": ""
+    },
+    {
+      "name_ar": "سبيط",
+      "name_en": "Squid",
+      "price": 800,
+      "image": ""
+    },
+    {
+      "name_ar": "سبيط ظهور",
+      "name_en": "Backs Squid",
+      "price": 1000,
+      "image": ""
+    },
+    {
+      "name_ar": "بيض سبيط",
+      "name_en": "Squid Eggs",
+      "price": 950,
+      "image": ""
+    },
+    {
+      "name_ar": "بطارخ",
+      "name_en": "Fish Roe",
+      "price": 1450,
+      "image": ""
+    },
+    {
+      "name_ar": "جمبري وسط",
+      "name_en": "Medium Shrimp",
+      "price": 1900,
+      "image": ""
+    },
+    {
+      "name_ar": "جمبري فوق الوسط",
+      "name_en": "Over Medium Shrimp",
+      "price": 2100,
+      "image": ""
+    },
+    {
+      "name_ar": "جمبري كبير",
+      "name_en": "Big Shrimp",
+      "price": 2300,
+      "image": ""
+    },
+    {
+      "name_ar": "جمبري جامبو",
+      "name_en": "Jumbo Shrimp",
+      "price": 2600,
+      "image": ""
+    },
+    {
+      "name_ar": "كابوريا",
+      "name_en": "Crab",
+      "price": 950,
+      "image": ""
+    },
+    {
+      "name_ar": "استاكوزا",
+      "name_en": "Lobster",
+      "price": 5000,
+      "image": ""
+    },
+    {
+      "name_ar": "فيليه قشر أبيض",
+      "name_en": "Nile Perch Filet",
+      "price": 950,
+      "image": ""
+    },
+    {
+      "name_ar": "بساريا",
+      "name_en": "Bisaria",
+      "price": 260,
+      "image": ""
+    },
+    {
+      "name_ar": "سردين",
+      "name_en": "Sardine",
+      "price": 550,
+      "image": ""
+    },
+    {
+      "name_ar": "سهلية",
+      "name_en": "Sahlia",
+      "price": 900,
+      "image": ""
+    },
+    {
+      "name_ar": "بوري",
+      "name_en": "Gray Mullet",
+      "price": 500,
+      "image": ""
+    },
+    {
+      "name_ar": "دنيس",
+      "name_en": "Sea Bream",
+      "price": 1000,
+      "image": ""
     }
   ],
 
+  "side_dishes": [
+    {
+      "name_ar": "شوربة فواكه البحر",
+      "name_en": "Sea Food Soup",
+      "price": 300,
+      "image": ""
+    },
+    {
+      "name_ar": "أرز صيادية سادة",
+      "name_en": "Brown Plain Rice",
+      "price": 75,
+      "image": ""
+    },
+    {
+      "name_ar": "أرز صيادية خلطة",
+      "name_en": "Brown Mixed Rice",
+      "price": 85,
+      "image": ""
+    },
+    {
+      "name_ar": "أرز صيادية جمبري",
+      "name_en": "Shrimp Rice",
+      "price": 250,
+      "image": ""
+    },
+    {
+      "name_ar": "أرز صيادية سي فود",
+      "name_en": "Sea Food Rice",
+      "price": 250,
+      "image": ""
+    },
+    {
+      "name_ar": "اسباجتي سادة",
+      "name_en": "Spaghetti",
+      "price": 125,
+      "image": ""
+    },
+    {
+      "name_ar": "اسباجتي فواكه البحر",
+      "name_en": "Sea Food Spaghetti",
+      "price": 300,
+      "image": ""
+    },
+    {
+      "name_ar": "فيونكة سادة",
+      "name_en": "Farfalle",
+      "price": 125,
+      "image": ""
+    },
+    {
+      "name_ar": "فيونكة جمبري",
+      "name_en": "Shrimp Farfalle",
+      "price": 300,
+      "image": ""
+    },
+    {
+      "name_ar": "ملوخية بالجمبري",
+      "name_en": "Jews Mallow With Shrimp",
+      "price": 175,
+      "image": ""
+    },
+    {
+      "name_ar": "بطاطس محمرة",
+      "name_en": "Fried Potatoes",
+      "price": 60,
+      "image": ""
+    }
+  ],
   "salads": [
     { "name": "سلطة خضراء", "price": 25 },
     { "name": "طحينة", "price": 15 }
