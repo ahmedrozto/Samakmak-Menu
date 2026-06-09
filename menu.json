@@ -163,13 +163,13 @@
       "name_ar": "شوربة فواكه البحر",
       "name_en": "Sea Food Soup",
       "price": 300,
-      "image": ""
+      "image": "images/side_dishes/Sea Food Soup.jpg"
     },
     {
       "name_ar": "أرز صيادية سادة",
       "name_en": "Brown Plain Rice",
       "price": 75,
-      "image": ""
+      "image": "images/side_dishes/Brown Plain Rice.jpg"
     },
     {
       "name_ar": "أرز صيادية خلطة",
@@ -181,7 +181,7 @@
       "name_ar": "أرز صيادية جمبري",
       "name_en": "Shrimp Rice",
       "price": 250,
-      "image": ""
+      "image": "images/side_dishes/Shrimp Rice.jpg"
     },
     {
       "name_ar": "أرز صيادية سي فود",
@@ -199,7 +199,7 @@
       "name_ar": "اسباجتي فواكه البحر",
       "name_en": "Sea Food Spaghetti",
       "price": 300,
-      "image": ""
+      "image": "images/side_dishes/Sea Food Spaghetti.jpg"
     },
     {
       "name_ar": "فيونكة سادة",
@@ -211,7 +211,7 @@
       "name_ar": "فيونكة جمبري",
       "name_en": "Shrimp Farfalle",
       "price": 300,
-      "image": ""
+      "image": "images/side_dishes/Shrimp Farfalle.jpg"
     },
     {
       "name_ar": "ملوخية بالجمبري",
