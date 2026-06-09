@@ -10,13 +10,13 @@
       "name_ar": "موسى",
       "name_en": "Sole Fish",
       "price": 1700,
-      "image": ""
+      "image": "images/fish/.jpg"
     },
     {
       "name_ar": "بربون",
       "name_en": "Red Mullet",
       "price": 1100,
-      "image": ""
+      "image": "images/fish/Red Mullet.jpg"
     },
     {
       "name_ar": "مرجان",
@@ -46,7 +46,7 @@
       "name_ar": "ثعبان",
       "name_en": "Sea Snake",
       "price": 850,
-      "image": ""
+      "image": "images/fish/Sea Snake.jpg"
     },
     {
       "name_ar": "جندوفلي",
