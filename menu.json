@@ -52,13 +52,13 @@
       "name_ar": "جندوفلي",
       "name_en": "Clams",
       "price": 750,
-      "image": ""
+      "image": "images/fish/Clams.jpg"
     },
     {
       "name_ar": "بلح البحر",
       "name_en": "Mussels",
       "price": 1250,
-      "image": ""
+      "image": "images/fish/Mussels.jpg"
     },
     {
       "name_ar": "سبيط",
@@ -112,7 +112,7 @@
       "name_ar": "كابوريا",
       "name_en": "Crab",
       "price": 950,
-      "image": ""
+      "image": "images/fish/Crab.jpg"
     },
     {
       "name_ar": "استاكوزا",
@@ -142,19 +142,19 @@
       "name_ar": "سهلية",
       "name_en": "Sahlia",
       "price": 900,
-      "image": ""
+      "image": "images/fish/Sahlia.jpg"
     },
     {
       "name_ar": "بوري",
       "name_en": "Gray Mullet",
       "price": 500,
-      "image": ""
+      "image": "images/fish/Gray Mullet.jpg"
     },
     {
       "name_ar": "دنيس",
       "name_en": "Sea Bream",
       "price": 1000,
-      "image": ""
+      "image": "images/fish/Sea Bream.jpg"
     }
   ],
 
