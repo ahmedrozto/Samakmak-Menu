@@ -88,13 +88,13 @@
       "name_ar": "جمبري وسط",
       "name_en": "Medium Shrimp",
       "price": 1900,
-      "image": ""
+      "image": "images/fish/Medium Shrimp.jpg""
     },
     {
       "name_ar": "جمبري فوق الوسط",
       "name_en": "Over Medium Shrimp",
       "price": 2100,
-      "image": ""
+      "image": "images/fish/Over Medium Shrimp.jpg"
     },
     {
       "name_ar": "جمبري كبير",
@@ -217,7 +217,7 @@
       "name_ar": "ملوخية بالجمبري",
       "name_en": "Jews Mallow With Shrimp",
       "price": 175,
-      "image": ""
+      "image": "images/side_dishes/Jews Mallow With Shrimp.jpg"
     },
     {
       "name_ar": "بطاطس محمرة",
