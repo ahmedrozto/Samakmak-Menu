@@ -124,13 +124,13 @@
       "name_ar": "فيليه قشر أبيض",
       "name_en": "Nile Perch Filet",
       "price": 950,
-      "image": ""
+      "image": "images/fish/Nile Perch Filet.jpg"
     },
     {
       "name_ar": "بساريا",
       "name_en": "Bisaria",
       "price": 260,
-      "image": ""
+      "image": "images/fish/Bisaria.jpg"
     },
     {
       "name_ar": "سردين",
