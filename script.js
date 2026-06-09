@@ -8,7 +8,8 @@ fetch("menu.json")
 
       if (!items || items.length === 0) return;
 
-      let html = `<div class="category"><h3>${title}</h3>`;
+      let html = `<div class="category">
+                    <h3>${title}</h3>`;
 
       items.forEach(item => {
 
@@ -17,7 +18,7 @@ fetch("menu.json")
 
             <div class="item-left">
 
-              ${item.image ? `<img src="${item.image}" alt="${item.name_ar || item.name || ''}">` : ""}
+              ${item.image ? `<img src="${item.image}" alt="${item.name_ar || ''}">` : ""}
 
               <span>
                 ${item.name_ar || item.name || item.name_en || "بدون اسم"}
@@ -53,9 +54,7 @@ let currentSlide = 0;
 if (slides.length > 0) {
   setInterval(() => {
     slides[currentSlide].classList.remove("active");
-
     currentSlide = (currentSlide + 1) % slides.length;
-
     slides[currentSlide].classList.add("active");
   }, 3500);
 }
