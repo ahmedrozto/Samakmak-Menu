@@ -64,19 +64,19 @@
       "name_ar": "سبيط",
       "name_en": "Squid",
       "price": 800,
-      "image": ""
+      "image": "images/fish/Squid.jpg"
     },
     {
       "name_ar": "سبيط ظهور",
       "name_en": "Backs Squid",
       "price": 1000,
-      "image": ""
+      "image": "images/fish/Squid.jpg"
     },
     {
       "name_ar": "بيض سبيط",
       "name_en": "Squid Eggs",
       "price": 950,
-      "image": ""
+      "image": "images/fish/Squid.jpg"
     },
     {
       "name_ar": "بطارخ",
