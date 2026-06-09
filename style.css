@@ -208,3 +208,16 @@ to{opacity:1;transform:translateY(0)}
 from{opacity:0}
 to{opacity:1}
 }
+/* FACEBOOK BUTTON */
+.btn.face-btn {
+    background: #1877F2; /* لون أزرق فيسبوك الرسمي */
+    margin-right: 10px; /* مسافة بسيطة لو الأزرار بجانب بعضها */
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* تأثير عند تمرير الماوس فوق زرار الفيسبوك */
+.btn.face-btn:hover {
+    background: #145dbf; /* درجة أزرق أغمق عند الوقوف بالماوس */
+    transform: translateY(-3px); /* رفعة خفيفة لفوق متناسقة مع حركات المنيو */
+    box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4); /* توهج أزرق خفيف */
+}
