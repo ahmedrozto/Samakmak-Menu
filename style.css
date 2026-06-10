@@ -237,29 +237,32 @@ to{opacity:1}
     box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4); /* توهج أزرق خفيف */
 }
 
-/* FOOTER STYLE */
+/* FOOTER STYLE - FIXED ON SCROLL */
 footer {
-    background: rgba(0, 0, 0, 0.5); /* خلفية داكنة شفافة متناسقة مع الهيدر */
-    backdrop-filter: blur(10px); /* تأثير تغبيش احترافي */
-    padding: 30px 20px;
+    position: fixed; /* تثبيت الفوتر في الشاشة */
+    bottom: 0; /* في أقصى قاع الشاشة */
+    left: 0;
+    width: 100%; /* ليمتد بعرض الشاشة كاملة */
+    background: rgba(0, 31, 41, 0.85); /* خلفية داكنة متناسقة مع لون الـ body وبشفافية ممتازة للقراءة */
+    backdrop-filter: blur(10px); /* تأثير التغبيش */
+    padding: 15px 20px; /* تقليل الـ padding عشان مياخدش مساحة كبيرة من الشاشة أثناء التصفح */
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* خط علوي نحيف وناعم */
-    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 999; /* عشان يفضل ظاهر فوق الأكلات وميستخباش وراها */
 }
 
 .footer-content p {
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* تصغير الخط قليلاً ليناسب التثبيت */
     font-weight: bold;
     letter-spacing: 1px;
-    margin-bottom: 8px;
-    /* تدريج لوني للنص يعطي لمسة فخامة للمطاعم */
+    margin-bottom: 3px;
     background: linear-gradient(45deg, #ffb000, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .footer-sub {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5); /* لون رمادي خفيف لحقوق النشر */
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
     display: block;
 }
