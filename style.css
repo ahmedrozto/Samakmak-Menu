@@ -237,25 +237,33 @@ to{opacity:1}
     box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4); /* توهج أزرق خفيف */
 }
 
-/* FOOTER STYLE - FIXED ON SCROLL */
+/* FOOTER STYLE - COMPACT & MINI */
 footer {
-    position: fixed; /* تثبيت الفوتر في الشاشة */
-    bottom: 0; /* في أقصى قاع الشاشة */
+    position: fixed; 
+    bottom: 0; 
     left: 0;
-    width: 100%; /* ليمتد بعرض الشاشة كاملة */
-    background: rgba(0, 31, 41, 0.85); /* خلفية داكنة متناسقة مع لون الـ body وبشفافية ممتازة للقراءة */
-    backdrop-filter: blur(10px); /* تأثير التغبيش */
-    padding: 7px 7px; /* تقليل الـ padding عشان مياخدش مساحة كبيرة من الشاشة أثناء التصفح */
+    width: 100%; 
+    background: rgba(0, 31, 41, 0.9); /* تقليص الشفافية سنة لزيادة وضوح الخط الصغير */
+    backdrop-filter: blur(10px); 
+    padding: 6px 20px; /* تقليل الارتفاع جداً (6 بكسل فقط من فوق وتحت) */
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 999; /* عشان يفضل ظاهر فوق الأكلات وميستخباش وراها */
+    z-index: 999; 
+}
+
+/* ترتيب العناصر في سطر واحد لتوفير المساحة */
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* المسافة بين اسم المطعم وحقوق النشر */
+    flex-wrap: wrap; /* عشان لو الشاشة صغيرة يندرجوا تحت بعض تلقائياً */
 }
 
 .footer-content p {
-    font-size: 1.2rem; /* تصغير الخط قليلاً ليناسب التثبيت */
+    font-size: 0.95rem; /* تصغير حجم الخط ليصبح ناعم ومتناسق */
     font-weight: bold;
-    letter-spacing: 1px;
-    margin-bottom: 3px;
+    margin-bottom: 0; /* إلغاء الهامش السفلي تماماً */
     background: linear-gradient(45deg, #ffb000, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -263,6 +271,6 @@ footer {
 
 .footer-sub {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.5);
-    display: block;
+    color: rgba(255, 255, 255, 0.4);
+    display: inline-block; /* جعلها بجانب النص الرئيسي */
 }
