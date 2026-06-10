@@ -245,10 +245,12 @@ footer {
     width: 100%; 
     background: rgba(0, 31, 41, 0.9); /* تقليص الشفافية سنة لزيادة وضوح الخط الصغير */
     backdrop-filter: blur(10px); 
-    padding: 6px 20px; /* تقليل الارتفاع جداً (6 بكسل فقط من فوق وتحت) */
+    padding: 4px 20px !important; /* تقليل الارتفاع أكثر إلى 4 بكسل مع ضمان التطبيق */
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 999; 
+    min-height: auto !important; /* إلغاء أي حد أدنى للارتفاع مبرمج مسبقاً */
+    box-sizing: border-box;
 }
 
 /* ترتيب العناصر في سطر واحد لتوفير المساحة */
@@ -256,21 +258,26 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px; /* المسافة بين اسم المطعم وحقوق النشر */
-    flex-wrap: wrap; /* عشان لو الشاشة صغيرة يندرجوا تحت بعض تلقائياً */
+    gap: 12px; /* تقليل المسافة قليلاً لتناسب الخط الصغير */
+    flex-wrap: wrap; 
+    margin: 0 !important; /* تصفير هوامش الحاوية تماماً */
+    padding: 0 !important;
 }
 
 .footer-content p {
-    font-size: 0.95rem; /* تصغير حجم الخط ليصبح ناعم ومتناسق */
+    font-size: 0.85rem; /* تصغير الخط من 0.95 ليكون ناعماً جداً ومناسباً للـ 6 بكسل */
     font-weight: bold;
-    margin-bottom: 0; /* إلغاء الهامش السفلي تماماً */
+    margin: 0 !important; /* تصفير جميع الهوامش (العلوية والسفلية) التي يفرضها المتصفح تلقائياً */
+    line-height: 1.2 !important; /* ضغط ارتفاع السطر لمنع تمدد الفوتر */
     background: linear-gradient(45deg, #ffb000, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .footer-sub {
-    font-size: 0.75rem;
+    font-size: 0.72rem; /* تصغير متناسق مع النص الرئيسي */
     color: rgba(255, 255, 255, 0.4);
-    display: inline-block; /* جعلها بجانب النص الرئيسي */
+    margin: 0 !important; /* تصفير الهوامش تماماً */
+    line-height: 1.2 !important;
+    display: inline-block; 
 }
