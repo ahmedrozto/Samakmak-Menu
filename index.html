@@ -14,36 +14,44 @@
 <body>
 
 <!-- NAV -->
-<nav>
+<nav class="navbar">
+
+    <a href="#" class="logo">
+        <img src="images/logo.png" alt="Samakmak">
+    </a>
 
     <div class="links">
         <a href="#menu">المنيو</a>
         <a href="#branches">الفروع</a>
         <a href="#contact">تواصل</a>
     </div>
-</nav>
 
+</nav>
 <!-- HERO -->
 <header>
-
-<div class="slider">
-    <div class="slide active"><img src="images/hero.jpg"></div>
-    <div class="slide"><img src="images/fish/denis.jpg"></div>
-    <div class="slide"><img src="images/fish/bolty.jpg"></div>
-</div>
 
 <div class="overlay"></div>
 
 <div class="hero">
-    <img src="images/logo.png">
-    <h1>مطعم سمكمك</h1>
-    <p>أجود المأكولات البحرية الطازجة</p>
 
-    <a href="https://wa.me/201110997766" class="btn">
-        اطلب واتساب
-    </a>
+<img src="images/logo.png" class="hero-logo">
+
+<h1>مطعم سمكمك</h1>
+
+<p>
+أشهى المأكولات البحرية الطازجة منذ عام 1982
+</p>
+
+<a href="#menu" class="menu-btn">
+استعرض المنيو
+</a>
+
+<a href="https://wa.me/201110997766" class="btn">
+اطلب الآن
+</a>
+
 </div>
-
+    
 </header>
 
 <!-- MENU -->
@@ -51,6 +59,39 @@
 
 <h2 class="title animate">المنيو</h2>
 
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="ابحث عن صنف...">
+
+</div>
+
+<div class="categories">
+
+<button class="filter active" data-filter="all">
+الكل
+</button>
+
+<button class="filter" data-filter="fish">
+🐟 أسماك
+</button>
+
+<button class="filter" data-filter="side">
+🍤 أطباق جانبية
+</button>
+
+<button class="filter" data-filter="salads">
+🥗 سلطات
+</button>
+
+<button class="filter" data-filter="drinks">
+🥤 مشروبات
+</button>
+
+</div>
+    
 <div id="menuContainer"></div>
 
 </section>
@@ -96,10 +137,35 @@
 <script src="script.js"></script>
 
 <footer>
-    <div class="footer-content">
-        <p>Welcome to Samakmak Restaurant</p>
-        <span class="footer-sub">© 2026 All Rights Reserved</span>
-    </div>
+
+<img src="images/logo.png" width="70">
+
+<h3>مطعم سمكمك</h3>
+
+<p>
+
+منذ عام 1982 نقدم أفضل المأكولات البحرية الطازجة.
+
+</p>
+
+<p>
+
+📍 6 أكتوبر - غرب سوميد
+
+</p>
+
+<p>
+
+📞 01110997766
+
+</p>
+
+<p>
+
+© 2026 Samakmak Restaurant
+
+</p>
+
 </footer>
     
 </body>
