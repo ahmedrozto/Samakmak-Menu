@@ -1,4 +1,4 @@
- {
+{
  "fish": [
     {
       "name_ar": "قاروص",
@@ -150,112 +150,14 @@
       "price": 500,
       "image": "images/fish/Gray Mullet.jpg"
     },
-    {"name_ar": "دنيس","name_en": "Sea Bream","price": 1000, "image": "images/fish/Sea Bream.jpg"}
-  ],
-
-  "side_dishes": [
     {
-      "name_ar": "شوربة فواكه البحر",
-      "name_en": "Sea Food Soup",
-      "price": 300,
-      "image": "images/side_dishes/Sea Food Soup.jpg"
-    },
-    {
-      "name_ar": "أرز صيادية سادة",
-      "name_en": "Brown Plain Rice",
-      "price": 75,
-      "image": "images/side_dishes/Brown Plain Rice.jpg"
-    },
-    {
-      "name_ar": "أرز صيادية خلطة",
-      "name_en": "Brown Mixed Rice",
-      "price": 85,
-      "image": ""
-    },
-    {
-      "name_ar": "أرز صيادية جمبري",
-      "name_en": "Shrimp Rice",
-      "price": 250,
-      "image": "images/side_dishes/Shrimp Rice.jpg"
-    },
-    {
-      "name_ar": "أرز صيادية سي فود",
-      "name_en": "Sea Food Rice",
-      "price": 250,
-      "image": ""
-    },
-    {
-      "name_ar": "اسباجتي سادة",
-      "name_en": "Spaghetti",
-      "price": 125,
-      "image": ""
-    },
-    {
-      "name_ar": "اسباجتي فواكه البحر",
-      "name_en": "Sea Food Spaghetti",
-      "price": 300,
-      "image": "images/side_dishes/Sea Food Spaghetti.jpg"
-    },
-    {
-      "name_ar": "فيونكة سادة",
-      "name_en": "Farfalle",
-      "price": 125,
-      "image": ""
-    },
-    {
-      "name_ar": "فيونكة جمبري",
-      "name_en": "Shrimp Farfalle",
-      "price": 300,
-      "image": "images/side_dishes/Shrimp Farfalle.jpg"
-    },
-    {
-      "name_ar": "ملوخية بالجمبري",
-      "name_en": "Jews Mallow With Shrimp",
-      "price": 175,
-      "image": "images/side_dishes/Jews Mallow With Shrimp.jpg"
-    },
-    {
-      "name_ar": "بطاطس محمرة",
-      "name_en": "Fried Potatoes",
-      "price": 60,
-      "image": ""
+      "name_ar": "دنيس",
+      "name_en": "Sea Bream",
+      "price": 1000,
+      "image": "images/fish/Sea Bream.jpg"
     }
   ],
-  "salads": [
-    { "name": "طحينة", "price": 60 },
-    { "name": "بابا غنوج", "price": 60 },
-    { "name": "راهب", "price": 50 },
-    { "name": "بطاطس", "price": 60 },
-    { "name": "جبنة قديمة", "price": 65 },
-    { "name": "مسقعة", "price": 65 },
-    { "name": "حارة", "price": 60 },
-    { "name": "بنجر", "price": 70 },
-    { "name": "كولوسلو", "price": 70 },
-    { "name": "سلطة خضراء", "price": 65 },
-    { "name": "ثومية", "price": 60 },
-    { "name": "باذنجان مقلي", "price": 65 },
-    { "name": "زيتونية", "price": 70 },
-    { "name": "مخلل", "price": 60 },
-    { "name": "كافيار", "price": 120 },
-    { "name": "رنجة", "price": 80 },
-    { "name": "سردين مملح", "price": 90 }
-  ],
 
-  "drinks": [
-    { "name": "مياه معدنية", "price": 30 },
-    { "name": "شاي", "price": 50 },
-    { "name": "قهوة تركي", "price": 70 },
-    { "name": "مشروبات غازية", "price": 50 },
-    { "name": "بيريل", "price": 60 },
-    { "name": "مياه معدنية كبيرة", "price": 40 },
-    { "name": "شويبس", "price": 60 },
-    { "name": "عصير ليمون", "price": 60 },
-    { "name": "عصير ليمون بالنعناع", "price": 60 },
-    { "name": "مهلبية", "price": 60 }
-
-  ]
-},
- 
   "side_dishes": [
     {
       "name_ar": "شوربة فواكه البحر",
