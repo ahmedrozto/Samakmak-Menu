@@ -1,172 +1,210 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo';
+}
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+body{
+background:linear-gradient(135deg,#001f29,#003b4d);
+color:white;
+overflow-x:hidden;
+}
 
-<title>سمكمك | مطعم مأكولات بحرية</title>
+/* NAV */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+position:fixed;
+width:100%;
+background:rgba(0,0,0,.4);
+backdrop-filter:blur(10px);
+z-index:999;
+}
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
+.logo{height:50px}
 
-<body>
 
-<!-- NAV -->
-<nav class="navbar">
+.links a{
+color:white;
+margin:0 10px;
+text-decoration:none;
+}
 
-    <a href="#" class="logo">
-        <img src="images/logo.png" alt="Samakmak">
-    </a>
+/* HERO */
+header{
+    height:100vh;
+    position:relative;
+    overflow:hidden;
 
-    <div class="links">
-        <a href="#menu">المنيو</a>
-        <a href="#branches">الفروع</a>
-        <a href="#contact">تواصل</a>
-    </div>
+    /* الخلفية الجديدة */
+    background: url("images/background-head.jpg") center/cover no-repeat;
+}
 
-</nav>
-<!-- HERO -->
-<header>
+/* طبقة تغبيش فوق الصورة */
+header::before{
+    content:"";
+    position:absolute;
+    inset:0;
 
-<div class="overlay"></div>
+    /* تظليل احترافي */
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.6),
+        rgba(0,0,0,.7)
+    );
 
-<div class="hero">
+    z-index:1;
+}
 
-<img src="images/logo.png" class="hero-logo">
+.slider{
+position:absolute;
+inset:0;
+}
 
-<h1>مطعم سمكمك</h1>
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+opacity:0;
+transition:1.5s ease;
+transform:scale(1.1);
+}
 
-<p>
-أشهى المأكولات البحرية الطازجة منذ عام 1982
-</p>
+.slide img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
 
-<a href="#menu" class="menu-btn">
-استعرض المنيو
-</a>
+.slide.active{
+opacity:1;
+transform:scale(1);
+}
 
-<a href="https://wa.me/201110997766" class="btn">
-اطلب الآن
-</a>
+.overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.6);
+}
 
-</div>
-    
-</header>
+.hero{
+position:relative;
+z-index:2;
+text-align:center;
+top:50%;
+transform:translateY(-50%);
+animation:fadeUp 1.5s ease;
+}
 
-<!-- MENU -->
-<section id="menu">
+.hero img{
+width:140px;
+}
 
-<h2 class="title animate">المنيو</h2>
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 25px;
+background:#25D366;
+color:white;
+border-radius:25px;
+text-decoration:none;
+}
 
-<div class="search-box">
+/* MENU */
+section{
+padding:70px 10%;
+}
 
-<input
-type="text"
-id="searchInput"
-placeholder="ابحث عن صنف...">
+.title{
+text-align:center;
+font-size:2.5rem;
+margin-bottom:40px;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
 
-</div>
+.title.show{
+opacity:1;
+transform:translateY(0);
+}
 
-<div class="categories">
+/* CATEGORY */
+.category{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:15px;
+margin-bottom:20px;
+animation:fadeUp 1s ease;
+}
 
-<button class="filter active" data-filter="all">
-الكل
-</button>
+/* ITEM */
+.item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,.1);
+animation:fadeIn 1s ease;
+}
 
-<button class="filter" data-filter="fish">
-🐟 أسماك
-</button>
+/* IMAGE INSIDE MENU */
+.item-left{
+display:flex;
+align-items:center;
+gap:10px;
+}
 
-<button class="filter" data-filter="side">
-🍤 أطباق جانبية
-</button>
+.item img{
+width:60px;
+height:60px;
+border-radius:10px;
+object-fit:cover;
+transition:.3s;
+}
 
-<button class="filter" data-filter="salads">
-🥗 سلطات
-</button>
+.item img:hover{
+transform:scale(1.2);
+}
 
-<button class="filter" data-filter="drinks">
-🥤 مشروبات
-</button>
+/* BRANCH */
+.branch{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:15px;
+margin-bottom:20px;
+animation:fadeUp 1s ease;
+}
 
-</div>
-    
-<div id="menuContainer"></div>
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+bottom:20px;
+left:20px;
+width:60px;
+height:60px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+color:white;
+text-decoration:none;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
 
-</section>
+/* ANIMATIONS */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(50px)}
+to{opacity:1;transform:translateY(0)}
+}
 
-<!-- BRANCHES -->
-<section id="branches" class="animate">
-
-<h2 class="title">الفروع</h2>
-
-<div class="branch">
-<h3>📍 6 أكتوبر</h3>
-<p>غرب سوميد - الممشى السياحي</p>
-<p>01110997766</p>
-<p>01032122268</p>
-<p>01026436005</p>
-<p>01117444571</p>
-<a href="https://maps.app.goo.gl/4fxdEMnoD3RSEVWLA" class="btn loc-btn">Location</a>
-</div>
-
-<div class="branch">
-<h3>📍 الإسكندرية</h3>
-<p>01011170040</p>
-<p>034811560</p>
-<p>034809523</p>
-<a href="https://maps.app.goo.gl/W3SB6WnKVE9eEMks8" class="btn loc-btn">Location</a>
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="animate">
-
-    <h2 class="title">تواصلو معنا عبر صفحة الفيس بوك</h2>
-
-    <a href="https://www.facebook.com/share/1JwjiqyzAq/" target="_blank" class="btn face-btn">
-        Face Book Page    </a>
-
-</section>
-
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/201110997766" class="whatsapp">💬</a>
-
-<script src="script.js"></script>
-
-<footer>
-
-<img src="images/logo.png" width="70">
-
-<h3>مطعم سمكمك</h3>
-
-<p>
-
-منذ عام 1982 نقدم أفضل المأكولات البحرية الطازجة.
-
-</p>
-
-<p>
-
-📍 6 أكتوبر - غرب سوميد
-
-</p>
-
-<p>
-
-📞 01110997766
-
-</p>
-
-<p>
-
-© 2026 Samakmak Restaurant
-
-</p>
-
-</footer>
-    
-</body>
-</html>
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
