@@ -1,210 +1,91 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Cairo';
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سمكمك | مطعم مأكولات بحرية</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-body{
-background:linear-gradient(135deg,#001f29,#003b4d);
-color:white;
-overflow-x:hidden;
-}
+<nav class="navbar">
+<a href="#" class="logo"><img src="images/logo.png" alt="Samakmak"></a>
+<div class="links">
+<a href="#menu">المنيو</a>
+<a href="#branches">الفروع</a>
+<a href="#contact">تواصل</a>
+</div>
+</nav>
 
-/* NAV */
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px;
-position:fixed;
-width:100%;
-background:rgba(0,0,0,.4);
-backdrop-filter:blur(10px);
-z-index:999;
-}
+<header>
+<div class="overlay"></div>
+<div class="hero">
+<img src="images/logo.png" class="hero-logo" alt="Logo">
+<h1>مطعم سمكمك</h1>
+<p>أشهى المأكولات البحرية الطازجة منذ عام 1982</p>
+<a href="#menu" class="menu-btn">استعرض المنيو</a>
+<a href="https://wa.me/201110997766" class="btn">اطلب الآن</a>
+</div>
+</header>
 
-.logo{height:50px}
+<section id="menu">
+<h2 class="title animate">المنيو</h2>
 
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="ابحث عن صنف...">
+</div>
 
-.links a{
-color:white;
-margin:0 10px;
-text-decoration:none;
-}
+<div class="categories">
+<button class="filter active" data-filter="all">الكل</button>
+<button class="filter" data-filter="fish">🐟 أسماك</button>
+<button class="filter" data-filter="side">🍤 أطباق جانبية</button>
+<button class="filter" data-filter="salads">🥗 سلطات</button>
+<button class="filter" data-filter="drinks">🥤 مشروبات</button>
+</div>
 
-/* HERO */
-header{
-    height:100vh;
-    position:relative;
-    overflow:hidden;
+<div id="menuContainer"></div>
+</section>
 
-    /* الخلفية الجديدة */
-    background: url("images/background-head.jpg") center/cover no-repeat;
-}
+<section id="branches" class="animate">
+<h2 class="title">الفروع</h2>
 
-/* طبقة تغبيش فوق الصورة */
-header::before{
-    content:"";
-    position:absolute;
-    inset:0;
+<div class="branch">
+<h3>📍 6 أكتوبر</h3>
+<p>غرب سوميد - الممشى السياحي</p>
+<p>01110997766</p>
+<p>01032122268</p>
+<p>01026436005</p>
+<p>01117444571</p>
+<a href="https://maps.app.goo.gl/4fxdEMnoD3RSEVWLA" class="btn loc-btn">Location</a>
+</div>
 
-    /* تظليل احترافي */
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,.6),
-        rgba(0,0,0,.7)
-    );
+<div class="branch">
+<h3>📍 الإسكندرية</h3>
+<p>01011170040</p>
+<p>034811560</p>
+<p>034809523</p>
+<a href="https://maps.app.goo.gl/W3SB6WnKVE9eEMks8" class="btn loc-btn">Location</a>
+</div>
+</section>
 
-    z-index:1;
-}
+<section id="contact" class="animate">
+<h2 class="title">تواصل معنا عبر صفحة الفيس بوك</h2>
+<a href="https://www.facebook.com/share/1JwjiqyzAq/" target="_blank" class="btn face-btn">Facebook Page</a>
+</section>
 
-.slider{
-position:absolute;
-inset:0;
-}
+<a href="https://wa.me/201110997766" class="whatsapp">💬</a>
 
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-opacity:0;
-transition:1.5s ease;
-transform:scale(1.1);
-}
+<script src="script.js"></script>
 
-.slide img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
+<footer>
+<img src="images/logo.png" width="70" alt="logo">
+<h3>مطعم سمكمك</h3>
+<p>منذ عام 1982 نقدم أفضل المأكولات البحرية الطازجة.</p>
+<p>📍 6 أكتوبر - غرب سوميد</p>
+<p>📞 01110997766</p>
+<p>© 2026 Samakmak Restaurant</p>
+</footer>
 
-.slide.active{
-opacity:1;
-transform:scale(1);
-}
-
-.overlay{
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.6);
-}
-
-.hero{
-position:relative;
-z-index:2;
-text-align:center;
-top:50%;
-transform:translateY(-50%);
-animation:fadeUp 1.5s ease;
-}
-
-.hero img{
-width:140px;
-}
-
-.btn{
-display:inline-block;
-margin-top:15px;
-padding:12px 25px;
-background:#25D366;
-color:white;
-border-radius:25px;
-text-decoration:none;
-}
-
-/* MENU */
-section{
-padding:70px 10%;
-}
-
-.title{
-text-align:center;
-font-size:2.5rem;
-margin-bottom:40px;
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-
-.title.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* CATEGORY */
-.category{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(10px);
-padding:20px;
-border-radius:15px;
-margin-bottom:20px;
-animation:fadeUp 1s ease;
-}
-
-/* ITEM */
-.item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:12px 0;
-border-bottom:1px solid rgba(255,255,255,.1);
-animation:fadeIn 1s ease;
-}
-
-/* IMAGE INSIDE MENU */
-.item-left{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.item img{
-width:60px;
-height:60px;
-border-radius:10px;
-object-fit:cover;
-transition:.3s;
-}
-
-.item img:hover{
-transform:scale(1.2);
-}
-
-/* BRANCH */
-.branch{
-background:rgba(255,255,255,.08);
-padding:20px;
-border-radius:15px;
-margin-bottom:20px;
-animation:fadeUp 1s ease;
-}
-
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-left:20px;
-width:60px;
-height:60px;
-background:#25D366;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px;
-color:white;
-text-decoration:none;
-box-shadow:0 10px 25px rgba(0,0,0,.3);
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(50px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
-}
+</body>
+</html>
