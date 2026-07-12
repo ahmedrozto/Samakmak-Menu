@@ -15,9 +15,7 @@ let currentFilter = "all";
 
 function createCard(item) {
 
-    const image = item.image && item.image.trim() !== ""
-        ? item.image
-        : "images/no-image.png";
+  const hasImage = item.image && item.image.trim() !== "";
 
     const name =
         item.name_ar ||
@@ -31,10 +29,12 @@ function createCard(item) {
 
     <div class="image-box">
 
-        <img
-            src="${image}"
-            alt="${name}"
-            loading="lazy">
+       ${hasImage ? `
+<img
+    src="${item.image}"
+    alt="${name}"
+    loading="lazy">
+` : ""}
 
     </div>
 
