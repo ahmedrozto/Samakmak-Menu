@@ -289,3 +289,18 @@ window.addEventListener("scroll", () => {
 });
 
 
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.links');
+
+mobileMenu.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// إغلاق القائمة تلقائياً عند الضغط على أي رابط داخلها
+document.querySelectorAll('.links a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
