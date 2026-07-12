@@ -1,71 +1,317 @@
+// =========================================
+// SAMAKMAK MENU
+// =========================================
+
+const container = document.getElementById("menuContainer");
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter");
+
+let menuData = {};
+let currentFilter = "all";
+
+// =========================================
+// LOAD JSON
+// =========================================
+
 fetch("menu.json")
-  .then(res => res.json())
-  .then(data => {
+    .then(res => res.json())
+    .then(data => {
 
-    const container = document.getElementById("menuContainer");
+        menuData = {
 
-    function render(title, items) {
+            fish: data.fish || [],
+            side: data.side_dishes || data.sides || [],
+            salads: data.salads || [],
+            drinks: data.drinks || []
 
-      if (!items || items.length === 0) return;
+        };
 
-      let html = `<div class="category">
-                    <h3>${title}</h3>`;
+        renderMenu();
 
-      items.forEach(item => {
+    })
 
-        html += `
-          <div class="item">
+    .catch(err => console.error(err));
 
-            <div class="item-left">
+// =========================================
+// RENDER
+// =========================================
 
-              ${item.image ? `<img src="${item.image}" alt="${item.name_ar || ''}">` : ""}
+function renderMenu(search = "") {
 
-              <span>
-                ${item.name_ar || item.name || item.name_en || "بدون اسم"}
-              </span>
+    container.innerHTML = "";
+
+    const sections = [
+
+        {
+            key: "fish",
+            title: "🐟 الأسماك",
+            badge: "أسماك"
+        },
+
+        {
+            key: "side",
+            title: "🍤 الأطباق الجانبية",
+            badge: "جانبي"
+        },
+
+        {
+            key: "salads",
+            title: "🥗 السلطات",
+            badge: "سلطة"
+        },
+
+        {
+            key: "drinks",
+            title: "🥤 المشروبات",
+            badge: "مشروب"
+        }
+
+    ];
+
+    sections.forEach(section => {
+
+        if (currentFilter !== "all" && currentFilter !== section.key)
+            return;
+
+        const items = menuData[section.key].filter(item => {
+
+            const name =
+                (
+                    item.name_ar ||
+                    item.name ||
+                    item.name_en ||
+                    ""
+                ).toLowerCase();
+
+            return name.includes(search.toLowerCase());
+
+        });
+
+        if (!items.length) return;
+
+        let html = `
+
+        <div class="category reveal">
+
+            <h2 class="category-title">
+
+                ${section.title}
+
+            </h2>
+
+            <div class="items">
+
+        `;
+
+        items.forEach(item => {
+
+            html += `
+
+            <div class="item">
+
+                <div class="item-image">
+
+                    <img
+
+                        src="${item.image || "images/no-image.jpg"}"
+
+                        alt="${item.name_ar || ""}"
+
+                        loading="lazy">
+
+                    <span class="badge">
+
+                        ${section.badge}
+
+                    </span>
+
+                </div>
+
+                <div class="item-content">
+
+                    <h3>
+
+                        ${item.name_ar || item.name || item.name_en}
+
+                    </h3>
+
+                    <p>
+
+                        ${item.name_en || ""}
+
+                    </p>
+
+                    <div class="item-footer">
+
+                        <span class="price">
+
+                            ${item.price || "--"} جنيه
+
+                        </span>
+
+                        <a
+
+                        href="https://wa.me/201110997766"
+
+                        class="order-btn">
+
+                            اطلب الآن
+
+                        </a>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <span>
-              ${item.price ? item.price + " جنيه" : ""}
-            </span>
+            `;
 
-          </div>
+        });
+
+        html += `
+
+            </div>
+
+        </div>
+
         `;
-      });
 
-      html += `</div>`;
+        container.innerHTML += html;
 
-      container.innerHTML += html;
-    }
+    });
 
-    render("🐟 الأسماك", data.fish);
-    render("🍤 الأطباق الجانبية", data.side_dishes || data.sides);
-    render("🥗 السلطات", data.salads);
-    render("🥤 المشروبات", data.drinks);
+    revealItems();
 
-  })
-  .catch(err => console.error("JSON Error:", err));
-
-/* SLIDER */
-let slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-
-if (slides.length > 0) {
-  setInterval(() => {
-    slides[currentSlide].classList.remove("active");
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add("active");
-  }, 3500);
 }
 
-/* SCROLL ANIMATION */
-window.addEventListener("scroll", () => {
-  document.querySelectorAll(".title").forEach(el => {
-    let pos = el.getBoundingClientRect().top;
+// =========================================
+// SEARCH
+// =========================================
 
-    if (pos < 600) {
-      el.classList.add("show");
-    }
-  });
+if (searchInput) {
+
+    searchInput.addEventListener("input", e => {
+
+        renderMenu(e.target.value);
+
+    });
+
+}
+
+// =========================================
+// FILTER
+// =========================================
+
+filterButtons.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        filterButtons.forEach(b =>
+            b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        currentFilter = btn.dataset.filter;
+
+        renderMenu(searchInput.value);
+
+    });
+
 });
+
+// =========================================
+// SCROLL TITLES
+// =========================================
+
+window.addEventListener("scroll", () => {
+
+    document.querySelectorAll(".title").forEach(el => {
+
+        if (el.getBoundingClientRect().top < 550) {
+
+            el.classList.add("show");
+
+        }
+
+    });
+
+});
+
+// =========================================
+// REVEAL
+// =========================================
+
+function revealItems() {
+
+    const observer = new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    }, {
+
+        threshold: .15
+
+    });
+
+    document.querySelectorAll(".reveal").forEach(el => {
+
+        observer.observe(el);
+
+    });
+
+}
+
+// =========================================
+// NAVBAR
+// =========================================
+
+window.addEventListener("scroll", () => {
+
+    const nav = document.querySelector("nav");
+
+    if (window.scrollY > 80)
+
+        nav.classList.add("scrolled");
+
+    else
+
+        nav.classList.remove("scrolled");
+
+});
+
+// =========================================
+// HERO SLIDER
+// =========================================
+
+const slides = document.querySelectorAll(".slide");
+
+let currentSlide = 0;
+
+if (slides.length) {
+
+    slides[0].classList.add("active");
+
+    setInterval(() => {
+
+        slides[currentSlide].classList.remove("active");
+
+        currentSlide++;
+
+        if (currentSlide >= slides.length)
+
+            currentSlide = 0;
+
+        slides[currentSlide].classList.add("active");
+
+    }, 5000);
+
+}
