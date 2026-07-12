@@ -377,6 +377,7 @@ header{
 
     background:url("images/background-head.jpg") center center/cover no-repeat;
 
+   animation:heroZoom 18s ease-in-out infinite alternate;
 }
 
 /* Overlay */
@@ -1749,5 +1750,16 @@ footer{
 padding:50px 20px 25px;
 
 }
+
+}
+@keyframes heroZoom{
+
+    from{
+        background-size:100%;
+    }
+
+    to{
+        background-size:112%;
+    }
 
 }
