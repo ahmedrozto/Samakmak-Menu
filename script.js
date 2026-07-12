@@ -50,68 +50,42 @@ fetch("menu.json")
     });
 
 // =========================================
-// RENDER (النسخة المصلحة المتوافقة مع الـ JSON الخاص بك)
+// RENDER (النسخة المحدثة لإخفاء مساحة الصور من السلطات والمشروبات)
 // =========================================
 
 function renderMenu(search = "") {
-    // تحويل قيمة البحث إلى نص دائمًا وبحروف صغيرة بأمان
     const searchString = String(search || "").trim().toLowerCase();
-
-    // تفريغ الحاوية قبل إعادة الرسم
     container.innerHTML = "";
 
     const sections = [
-        {
-            key: "fish",
-            title: "🐟 الأسماك",
-            badge: "أسماك"
-        },
-        {
-            key: "side",
-            title: "🍤 الأطباق الجانبية",
-            badge: "جانبي"
-        },
-        {
-            key: "salads",
-            title: "🥗 السلطات",
-            badge: "سلطة"
-        },
-        {
-            key: "drinks",
-            title: "🥤 المشروبات",
-            badge: "مشروب"
-        }
+        { key: "fish", title: "🐟 الأسماك", badge: "أسماك", hasImage: true },
+        { key: "side", title: "🍤 الأطباق الجانبية", badge: "جانبي", hasImage: true },
+        { key: "salads", title: "🥗 السلطات", badge: "سلطة", hasImage: false }, // بدون صور
+        { key: "drinks", title: "🥤 المشروبات", badge: "مشروب", hasImage: false } // بدون صور
     ];
 
     sections.forEach(section => {
-        // التحقق من الفلتر الحالي (التبويب النشط)
         if (currentFilter !== "all" && currentFilter !== section.key)
             return;
 
-        // التأكد من أن القسم يحتوي على مصفوفة بيانات سليمة
         const rawData = menuData[section.key];
         if (!rawData || !Array.isArray(rawData))
             return;
 
-        // فلترة العناصر بناءً على اسم عربي أو إنجليزي أو عام
         const items = rawData.filter(item => {
             const nameAr = String(item.name_ar || "").toLowerCase();
             const nameEn = String(item.name_en || "").toLowerCase();
             const nameGeneral = String(item.name || "").toLowerCase();
 
-            // إذا كان نص البحث فارغاً، يعود بـ true ليعرض كل العناصر مباشرة
             if (!searchString) return true;
 
-            // التحقق من مطابقة البحث في أي من الحقول الثلاثة
             return nameAr.includes(searchString) || 
                    nameEn.includes(searchString) || 
                    nameGeneral.includes(searchString);
         });
 
-        // إذا لم يطابق البحث أي عنصر في هذا القسم، تخطاه
         if (items.length === 0) return;
 
-        // بناء كود الـ HTML للقسم والعناصر التابعة له
         let html = `
         <div class="category reveal">
             <h2 class="category-title">${section.title}</h2>
@@ -119,21 +93,36 @@ function renderMenu(search = "") {
         `;
 
         items.forEach(item => {
-            // تحديد الاسم الأساسي للعرض (يفضل العربي ثم العام ثم الإنجليزي)
             const displayName = item.name_ar || item.name || item.name_en || "صنف بدون اسم";
             const subName = item.name_ar ? (item.name_en || "") : "";
 
-            html += `
-            <div class="item">
+            // التحقق مما إذا كان القسم يدعم الصور وما إذا كانت الصورة موجودة فعلياً
+            let imageHtml = "";
+            let noImageClass = "";
+
+            if (section.hasImage) {
+                const isValidImage = item.image && item.image.trim() !== "images/fish/.jpg" && item.image.trim() !== "";
+                const imgSrc = isValidImage ? item.image : "images/no-image.jpg";
+                
+                imageHtml = `
                 <div class="item-image">
-                    <img 
-                        src="${item.image && item.image.trim() !== "images/fish/.jpg" && item.image.trim() !== "" ? item.image : "images/no-image.jpg"}" 
-                        alt="${displayName}" 
-                        loading="lazy">
+                    <img src="${imgSrc}" alt="${displayName}" loading="lazy">
                     <span class="badge">${section.badge}</span>
                 </div>
+                `;
+            } else {
+                // إضافة كلاس اختياري للـ CSS في حال أردت تنسيق العناصر التي ليس بها صور بشكل خاص
+                noImageClass = "no-image-layout"; 
+            }
+
+            html += `
+            <div class="item ${noImageClass}">
+                ${imageHtml}
                 <div class="item-content">
-                    <h3>${displayName}</h3>
+                    <div class="item-header">
+                        <h3>${displayName}</h3>
+                        ${!section.hasImage ? `<span class="badge-inline">${section.badge}</span>` : ""}
+                    </div>
                     <p>${subName}</p>
                     <div class="item-footer">
                         <span class="price">${item.price || "--"} جنيه</span>
@@ -149,11 +138,9 @@ function renderMenu(search = "") {
         </div>
         `;
 
-        // إضافة القسم إلى الصفحة
         container.innerHTML += html;
     });
 
-    // تشغيل أنيميشن الظهور التدريجي بعد الرسم
     revealItems();
 }
 // =========================================
