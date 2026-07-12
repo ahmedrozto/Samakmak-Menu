@@ -6,31 +6,48 @@ const container = document.getElementById("menuContainer");
 const searchInput = document.getElementById("searchInput");
 const filterButtons = document.querySelectorAll(".filter");
 
-let menuData = {};
-let currentFilter = "all";
+let menuData = {
+    fish: [],
+    side: [],
+    salads: [],
+    drinks: []
+};
+let currentFilter = "all"; // التأكد من أن الفلتر الافتراضي يعرض كل شيء
 
 // =========================================
-// LOAD JSON
+// LOAD JSON (نسخة مطورة ومحصنة ضد الأخطاء)
 // =========================================
 
 fetch("menu.json")
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) {
+            throw new Error(`تعذر تحميل ملف الـ JSON: ${res.status}`);
+        }
+        return res.json();
+    })
     .then(data => {
+        // طباعة البيانات في الـ Console للتأكد من قراءتها بالكامل
+        console.log("البيانات المحملة من الـ JSON:", data);
 
+        // ربط البيانات بدقة مع معالجة أي اختلاف في المسميات
         menuData = {
-
             fish: data.fish || [],
             side: data.side_dishes || data.sides || [],
             salads: data.salads || [],
             drinks: data.drinks || []
-
         };
 
+        console.log("البيانات بعد الترتيب داخلياً:", menuData);
+
+        // استدعاء دالة الرسم
         renderMenu();
-
     })
-
-    .catch(err => console.error(err));
+    .catch(err => {
+        console.error("حدث خطأ أثناء جلب البيانات:", err);
+        if(container) {
+            container.innerHTML = `<p style="color:red; text-align:center;">حدث خطأ في تحميل القائمة، يرجى مراجعة الـ Console</p>`;
+        }
+    });
 
 // =========================================
 // RENDER (النسخة المصلحة المتوافقة مع الـ JSON الخاص بك)
