@@ -221,6 +221,23 @@ filterButtons.forEach(btn => {
 });
 
 // =========================================
+// FILTER (تم تعديله لمنع الأخطاء)
+// =========================================
+
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        currentFilter = btn.dataset.filter;
+
+        // التأكد من جلب نص البحث الحالي بأمان، وإذا لم يوجد نرسل نصاً فارغاً
+        const searchValue = searchInput ? searchInput.value : "";
+        renderMenu(searchValue);
+    });
+});
+
+// =========================================
 // SCROLL TITLES
 // =========================================
 
