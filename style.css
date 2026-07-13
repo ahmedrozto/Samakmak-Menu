@@ -747,7 +747,45 @@ header::after {
 .branch a:hover {
     color: var(--gold);
 }
+/* =========================================
+   تعديل ألوان أزرار الـ Location والـ Facebook
+========================================= */
 
+/* 1. جعل أزرار الـ Location باللون الأبيض بالكامل */
+.branch .loc-btn {
+    background: #ffffff !important; /* خلفية بيضاء */
+    color: #111111 !important; /* نص أسود مريح للعين */
+    border: 1px solid #ffffff;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+/* تأثير تمرير الماوس فوق زر الـ Location */
+.branch .loc-btn:hover {
+    background: transparent !important; /* خلفية شفافة */
+    color: #ffffff !important; /* النص يتحول للأبيض */
+    border-color: #ffffff; /* بقاء الإطار أبيض */
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(255, 255, 255, 0.2);
+}
+
+
+/* 2. جعل زر الـ Facebook باللون الأزرق الرسمي */
+#contact .btn {
+    background: rgba(24, 119, 242, 0.1) !important; /* خلفية زجاجية زرقاء خفيفة */
+    border: 1px solid rgba(24, 119, 242, 0.4) !important; /* إطار أزرق شبه شفاف */
+    color: #1877F2 !important; /* لون النص والأيقونة بالأزرق */
+    box-shadow: none !important; /* إلغاء ظل الزر الأخضر الافتراضي */
+    transition: var(--transition);
+}
+
+/* تأثير تمرير الماوس فوق زر الـ Facebook */
+#contact .btn:hover {
+    background: #1877F2 !important; /* تعبئة كاملة بالأزرق */
+    color: #ffffff !important; /* النص والأيقونة يتحولان للأبيض */
+    box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4) !important;
+    transform: translateY(-4px);
+}
 /* 13. FOOTER
 ========================================= */
 footer {
