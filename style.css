@@ -821,20 +821,20 @@ footer {
     padding-top: 25px;
     font-size: .95rem;
 }
-
-/* تغيير لون أيقونة الفيس بوك إلى اللون الأزرق */
-.footer-social a.facebook i {
-    color: #1877F2; /* لون الفيس بوك الرسمي */
+/* تخصيص زر الفيسبوك باللون الأزرق الرسمي */
+#contact .btn {
+    background: rgba(24, 119, 242, 0.1); /* خلفية زجاجية زرقاء خفيفة جداً */
+    border: 1px solid rgba(24, 119, 242, 0.4); /* إطار أزرق شبه شفاف */
+    color: #1877F2 !important; /* لون النص والأيقونة بالأزرق الرسمي */
     transition: var(--transition);
 }
 
-/* تأثير خفيف عند تمرير الماوس فوقها (اختياري) */
-.footer-social a.facebook:hover {
-    background: #1877F2;
-}
-
-.footer-social a.facebook:hover i {
-    color: #fff; /* يتحول اللوجو للون الأبيض عند تمرير الماوس */
+/* تأثير رائع عند تمرير الماوس فوق الزر */
+#contact .btn:hover {
+    background: #1877F2 !important; /* تعبئة الزر بالكامل بالأزرق */
+    color: #fff !important; /* تحول النص والأيقونة للون الأبيض */
+    box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4); /* توهج أزرق ناعم */
+    transform: translateY(-4px);
 }
 
 /* 14. UTILITIES (WHATSAPP BUTTON)
