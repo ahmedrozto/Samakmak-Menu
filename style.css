@@ -822,6 +822,21 @@ footer {
     font-size: .95rem;
 }
 
+/* تغيير لون أيقونة الفيس بوك إلى اللون الأزرق */
+.footer-social a.facebook i {
+    color: #1877F2; /* لون الفيس بوك الرسمي */
+    transition: var(--transition);
+}
+
+/* تأثير خفيف عند تمرير الماوس فوقها (اختياري) */
+.footer-social a.facebook:hover {
+    background: #1877F2;
+}
+
+.footer-social a.facebook:hover i {
+    color: #fff; /* يتحول اللوجو للون الأبيض عند تمرير الماوس */
+}
+
 /* 14. UTILITIES (WHATSAPP BUTTON)
 ========================================= */
 .whatsapp {
