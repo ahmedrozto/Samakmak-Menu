@@ -743,8 +743,22 @@ footer{
 }
 
 @media (max-width:768px){
-    .menu-toggle { display: flex; }
+    /* ضبط شريط التنقل لتوزيع العناصر بشكل صحيح */
+    nav { 
+        height: 70px !important; 
+        padding: 0 5% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
     
+    /* إجبار زر الهامبرغر على الظهور دائماً على اليسار */
+    .menu-toggle { 
+        display: flex !important; 
+        order: 2; 
+    }
+    
+    /* القائمة الجانبية المحدثة */
     .links {
         position: fixed;
         top: 0;
@@ -761,17 +775,21 @@ footer{
         padding: 40px;
         transition: right 0.4s cubic-bezier(0.1, 0.8, 0.3, 1);
         box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        z-index: 9999;
     }
-    .links.active { right: 0; }
+    
+    /* إظهار القائمة بسلاسة عند الضغط */
+    .links.active { right: 0 !important; }
     .links a { font-size: 20px; width: 100%; text-align: center; }
     .links .nav-btn { width: 100%; text-align: center; }
 
+    /* حركات تحول الزر لعالمة X */
     .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--primary); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; transform: scale(0); }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--primary); }
 
-    nav{ height:70px; }
-    .logo{ height:50px; }
+    /* باقي تنسيقات الهيدر والمحتوى كما هي */
+    .logo{ height:48px !important; }
     .hero{ width:92%; }
     .hero img{ width:120px; }
     .hero h1{ font-size:2.3rem; }
