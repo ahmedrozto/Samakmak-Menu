@@ -141,7 +141,24 @@ function renderMenu(search = "") {
         container.innerHTML += html;
     });
 
-    revealItems();
+    function revealItems() {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                // إلغاء مراقبة العنصر بعد ظهوره لتوفير أداء المعالج
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, {
+        threshold: 0.01, // تقليل القيمة ليظهر الكارت فور ملامسته للشاشة
+        rootMargin: "50px" // جعل الكروت تفتح قبل أن يصل إليها المستخدم بـ 50 بكسل
+    });
+
+    document.querySelectorAll(".reveal").forEach(el => {
+        observer.observe(el);
+    });
+}
 }
 // =========================================
 // SEARCH
