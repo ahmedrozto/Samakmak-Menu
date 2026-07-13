@@ -894,3 +894,74 @@ footer{
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
+
+/* =========================================
+   MODERN GLASS SEARCH BAR (شريط البحث المطور)
+========================================= */
+.search-box {
+    position: relative;
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto 35px auto; /* لتوسيط الشريط وإبعاده عن الأزرار بالأسفل */
+    z-index: 5;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 50px 15px 25px; /* مسافة يمين للأيقونة ومسافة يسار مريحة للعين */
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 50px; /* تصميم دائري ناعم */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: right;
+    direction: rtl;
+}
+
+/* تأثير الـ Focus عند الضغط والكتابة */
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.25);
+}
+
+/* أيقونة البحث الداخلية */
+.search-box .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 22px;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 1.1rem;
+    transition: var(--transition);
+    pointer-events: none; /* لمنع تداخل الضغط مع حقل الإدخال */
+}
+
+/* تغيير لون الأيقونة تلقائياً عند تفاعل المستخدم مع السيرش */
+.search-box input:focus + .search-icon {
+    color: var(--primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* التجاوب مع الهواتف الذكية */
+@media (max-width: 768px) {
+    .search-box {
+        width: 95%;
+        margin-bottom: 25px;
+    }
+    .search-box input {
+        padding: 12px 45px 12px 20px;
+        font-size: 0.95rem;
+    }
+    .search-box .search-icon {
+        right: 18px;
+        font-size: 1rem;
+    }
+}
