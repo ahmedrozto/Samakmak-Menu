@@ -796,3 +796,82 @@ footer{
     .branch{ padding:20px; }
     footer{ padding:50px 20px 25px; }
 }
+
+/* =========================================
+   FIXES FOR MOBILE & NO-IMAGE CARDS (تعديلات الهواتف)
+========================================= */
+
+/* 1. إصلاح توزيع شبكة الكروت على الهواتف */
+@media (max-width: 768px) {
+    .items {
+        /* تحويل الكروت لعمود واحد مريح للعين بدلاً من كارتين مضغوطين */
+        grid-template-columns: 1fr !important; 
+        gap: 20px;
+    }
+}
+
+/* 2. جعل كل كرت يأخذ نفس الارتفاع الذكي لتنسيق متوازي */
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+/* 3. تنسيق خاص واحترافي لكروت (السلطات والمشروبات) التي ليس لها صور */
+.no-image-layout {
+    min-height: 150px;
+    border-top: 3px solid var(--primary); /* إضافة لمسة جمالية علوية تعوض غياب الصورة */
+    background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.09)) !important;
+}
+
+/* تنظيم الجزء العلوي من الكارت بدون صورة */
+.no-image-layout .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+/* إضافة شارة داخلية ناعمة بجانب الاسم */
+.badge-inline {
+    background: rgba(0, 188, 212, 0.15);
+    color: var(--primary);
+    padding: 3px 12px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    border: 1px solid rgba(0, 188, 212, 0.3);
+}
+
+/* 4. إصلاح تداخل الفوتر على الهواتف الصغيرة جداً */
+@media (max-width: 480px) {
+    .item-footer {
+        flex-direction: row !important; /* إبقاء السعر والزر متجاورين بشكل أنيق */
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100%;
+        margin-top: 15px;
+        padding-top: 12px;
+        border-top: 1px dashed rgba(255,255,255,0.1);
+    }
+    
+    .price {
+        font-size: 0.95rem !important;
+        padding: 6px 14px !important;
+    }
+
+    .order-btn {
+        padding: 8px 16px !important;
+        font-size: 0.85rem !important;
+    }
+}
