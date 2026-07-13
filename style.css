@@ -965,3 +965,95 @@ footer{
         font-size: 1rem;
     }
 }
+/* =========================================
+   FILTER BUTTONS STYLE (أزرار الفلتر الاحترافية)
+========================================= */
+.categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 45px;
+    padding: 10px;
+}
+
+.categories .filter {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--muted);
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 12px 26px;
+    border-radius: 50px; /* تصميم كبسولة انسيابي */
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* تأثير عند تمرير الماوس فوق الزر (Hover) */
+.categories .filter:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(0, 188, 212, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.2);
+}
+
+/* التنسيق الخرافي للزر النشط حالياً (Active/Selected) */
+.categories .filter.active {
+    color: #111 !important; /* لون الخط داكن ليكون واضحاً جداً فوق الخلفية الذهبية */
+    background: linear-gradient(45deg, var(--gold), #ffdb6d) !important;
+    border-color: var(--gold) !important;
+    font-weight: 800;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(255, 193, 7, 0.4);
+}
+
+/* إضافة لمعة زجاجية متحركة داخل الزر عند التمرير */
+.categories .filter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.6s;
+}
+
+.categories .filter:hover::before {
+    left: 100%;
+}
+
+/* =========================================
+   RESPONSIVE (التوافق مع الهواتف)
+========================================= */
+@media (max-width: 768px) {
+    .categories {
+        gap: 10px;
+        margin-bottom: 35px;
+        justify-content: flex-start; /* ترتيب الأزرار لتبدأ من اليمين لسهولة التصفح */
+        overflow-x: auto; /* تمكين السحب الأفقي للأزرار على الهواتف */
+        white-space: nowrap;
+        padding-bottom: 15px;
+        
+        /* إخفاء شريط التمرير الافتراضي لشكل أنظف */
+        -ms-overflow-style: none;  
+        scrollbar-width: none; 
+    }
+    
+    .categories::-webkit-scrollbar {
+        display: none; /* إخفاء سكرول بار الأزرار على الكروم وسفاري */
+    }
+
+    .categories .filter {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
