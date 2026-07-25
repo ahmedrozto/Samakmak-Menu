@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SAMAKMAK MENU - Modern CSS v2.0 (Organized Reference Edition)
+   SAMAKMAK MENU - Modern CSS v2.1 (Full Complete & Mobile Optimized)
    ========================================================================== */
 
 /* 1. GOOGLE FONTS
@@ -831,7 +831,7 @@ header::after {
     color: var(--gold);
 }
 
-/* تعديل ألوان أزرار الـ Location والـ Facebook */
+/* أزرار الـ Location والـ Facebook */
 .branch .loc-btn {
     background: #ffffff !important;
     color: #111111 !important;
@@ -1017,8 +1017,10 @@ footer {
     .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* --- PHONES (768px) --- */
+/* --- PHONES & SMALL SCREENS (تنسيق الموبايل المطور لـ 3 كروت بالعرض) --- */
 @media (max-width: 768px) {
+    section { padding: 50px 10px; }
+
     nav { 
         height: 70px !important; 
         padding: 0 5% !important;
@@ -1067,23 +1069,93 @@ footer {
     .hero-buttons { flex-direction: column; }
     .btn, .btn-outline { width: 100%; justify-content: center; }
     .title { font-size: 2rem; }
-    .item-image { height: 220px; }
-    .category-title { font-size: 1.6rem; }
+    .category-title { font-size: 1.3rem; margin-bottom: 18px; }
     .footer-grid, .branches { grid-template-columns: 1fr; }
-    .whatsapp { width: 60px; height: 60px; font-size: 26px; }
+    .whatsapp { width: 55px; height: 55px; font-size: 24px; left: 15px; bottom: 15px; }
 
+    /* =========================================
+       ضبط الشبكة لتعرض 3 كروت بالعرض على الموبايل
+       ========================================= */
     .items {
-        grid-template-columns: 1fr !important; 
-        gap: 20px;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important;
     }
 
+    /* تصغير حجم الكارت والتفاصيل الداخلية */
+    .item {
+        padding: 6px !important;
+        border-radius: 12px !important;
+    }
+
+    .item-image {
+        height: 75px !important;
+        border-radius: 8px !important;
+    }
+
+    .badge {
+        top: 4px !important;
+        left: 4px !important;
+        font-size: 0.55rem !important;
+        padding: 2px 5px !important;
+    }
+
+    .item-content {
+        padding: 4px 2px 2px 2px !important;
+    }
+
+    .item-content h3 {
+        font-size: 0.72rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 2px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .item-content p {
+        font-size: 0.6rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 6px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* تعديل السعر وزر الطلب ليتناسبا مع العرض الصغير */
+    .item-footer {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 4px !important;
+        margin-top: 4px !important;
+        padding-top: 4px !important;
+        border-top: 1px dashed rgba(255,255,255,0.1) !important;
+    }
+
+    .price {
+        font-size: 0.68rem !important;
+        padding: 3px 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+        box-shadow: none !important;
+    }
+
+    .order-btn {
+        font-size: 0.62rem !important;
+        padding: 3px 0 !important;
+        width: 100% !important;
+        justify-content: center !important;
+        border-radius: 20px !important;
+    }
+
+    /* أزرة الفلتر والبحث للموبايل */
     .categories {
-        gap: 10px;
-        margin-bottom: 35px;
+        gap: 8px;
+        margin-bottom: 25px;
         justify-content: flex-start;
         overflow-x: auto;
         white-space: nowrap;
-        padding-bottom: 15px;
+        padding-bottom: 10px;
         -ms-overflow-style: none;  
         scrollbar-width: none; 
     }
@@ -1091,64 +1163,45 @@ footer {
         display: none;
     }
     .categories .filter {
-        padding: 10px 20px;
-        font-size: 0.9rem;
+        padding: 8px 16px;
+        font-size: 0.85rem;
     }
 
     .search-box {
-        width: 95%;
-        margin-bottom: 25px;
+        width: 100%;
+        margin-bottom: 20px;
     }
     .search-box input {
-        padding: 12px 45px 12px 20px;
-        font-size: 0.95rem;
+        padding: 10px 40px 10px 15px;
+        font-size: 0.88rem;
     }
     .search-box .search-icon {
-        right: 18px;
-        font-size: 1rem;
+        right: 14px;
+        font-size: 0.9rem;
     }
 
-    /* Responsive adjustment for Pagination */
+    /* ضبط أزرار الـ Pagination للموبايل */
     .pagination-wrapper {
-        gap: 8px;
+        gap: 6px;
+        margin-top: 30px;
         padding: 10px 0;
     }
     .page-btn {
-        padding: 10px 16px;
-        font-size: 0.85rem;
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
     .page-num {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9rem;
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
     }
 }
 
 /* --- SMALL PHONES (480px) --- */
 @media (max-width: 480px) {
-    section { padding: 70px 20px; }
-    .hero h1 { font-size: 2rem; }
-    .hero p { font-size: .95rem; }
-    .title { font-size: 1.7rem; }
-    .item-content { padding: 18px; }
-    .branch { padding: 20px; }
-    footer { padding: 50px 20px 25px; }
-
-    .item-footer {
-        flex-direction: row !important; 
-        justify-content: space-between !important;
-        align-items: center !important;
-        width: 100%;
-        margin-top: 15px;
-        padding-top: 12px;
-        border-top: 1px dashed rgba(255,255,255,0.1);
-    }
-    .price {
-        font-size: 0.95rem !important;
-        padding: 6px 14px !important;
-    }
-    .order-btn {
-        padding: 8px 16px !important;
-        font-size: 0.85rem !important;
-    }
+    .hero h1 { font-size: 1.8rem; }
+    .hero p { font-size: .9rem; }
+    .title { font-size: 1.5rem; }
+    .branch { padding: 18px; }
+    footer { padding: 40px 15px 20px; }
 }
