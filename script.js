@@ -1,5 +1,5 @@
 // =========================================
-// SAMAKMAK MENU - JavaScript Core v2.4 (Fixed)
+// SAMAKMAK MENU - JavaScript Core v2.5 (With Welcome & Icon)
 // =========================================
 
 const container = document.getElementById("menuContainer");
@@ -66,8 +66,9 @@ function renderMenu(search = "") {
     container.innerHTML = "";
     if(paginationWrapper) paginationWrapper.innerHTML = ""; 
 
+    // تعريف الأقسام مع إضافة الأيقونات المخصصة
     const sections = [
-        { key: "fish", title: "🐟 الأسماك", badge: "أسماك", hasImage: true },
+        { key: "fish", title: "🐟🦐 قائمة الأسماك الطازجة", badge: "أسماك", hasImage: true },
         { key: "side", title: "🍤 الأطباق الجانبية", badge: "جانبي", hasImage: true },
         { key: "salads", title: "🥗 السلطات", badge: "سلطة", hasImage: false }, 
         { key: "drinks", title: "🥤 المشروبات", badge: "مشروب", hasImage: false } 
@@ -76,8 +77,17 @@ function renderMenu(search = "") {
     let totalFilteredItems = 0;
     let menuHTML = "";
 
+    // إضافة رسالة الترحيب في أعلى القائمة عند العرض الافتراضي أو عدم البحث
+    if (searchString === "" && currentFilter === "fish") {
+        menuHTML += `
+        <div class="welcome-banner reveal show" style="background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(3, 4, 94, 0.2)); border: 1px solid var(--primary); padding: 25px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
+            <h2 style="color: var(--primary); margin-bottom: 10px; font-size: 1.8rem;">🌊 أهلاً بك في مطعم سمكك (Samakmak)</h2>
+            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">نقدم لك أشهى وأفضل الأسماك الطازجة والمأكولات البحرية يومياً بأعلى جودة. اختر ما يعجبك واطلب بسهولة عبر الواتساب! 🎣</p>
+        </div>
+        `;
+    }
+
     sections.forEach(section => {
-        // إذا كان هناك بحث نشط، ابحث في الكل، وإلا اتبع الفلتر المحدد
         if (searchString === "" && currentFilter !== "all" && currentFilter !== section.key) return;
 
         const rawData = menuData[section.key];
@@ -260,10 +270,8 @@ if (searchInput) {
         const val = e.target.value.trim();
         
         if (val !== "") {
-            // أثناء البحث نلغي التحديد عن الأزرار مؤقتاً ليبحث في كل الأقسام
             filterButtons.forEach(b => b.classList.remove("active"));
         } else {
-            // إذا تم مسح البحث، يعود النظام تلقائياً لقسم الأسماك وتفعيل زره
             currentFilter = "fish";
             filterButtons.forEach(b => {
                 b.classList.remove("active");
@@ -277,11 +285,9 @@ if (searchInput) {
 
 filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-        // تفعيل الزر الذي تم الضغظ عليه حصراً وإلغاء الباقي
         filterButtons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
 
-        // تفريغ مربع البحث تماماً عند الضغط على أي زر تصنيف لضمان العمل السليم
         if(searchInput) searchInput.value = "";
 
         currentFilter = btn.dataset.filter;
