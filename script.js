@@ -1,5 +1,5 @@
 // =========================================
-// SAMAKMAK MENU - JavaScript Core v2.0
+// SAMAKMAK MENU - JavaScript Core v2.1 (Fixed Layout)
 // =========================================
 
 const container = document.getElementById("menuContainer");
@@ -16,7 +16,7 @@ let menuData = {
 
 let currentFilter = "all";
 let currentPage = 1;
-const itemsPerPage = 8; // عدد الوجبات/العناصر المعروضة في الصفحة الواحدة (يمكنك تعديل الرقم)
+const itemsPerPage = 8; // عدد الوجبات في الصفحة الواحدة
 
 // =========================================
 // 1. FETCH & LOAD JSON 
@@ -55,11 +55,13 @@ fetch("menu.json")
     });
 
 // =========================================
-// 2. MAIN RENDER FUNCTION (مع الـ Pagination)
+// 2. MAIN RENDER FUNCTION
 // =========================================
 
 function renderMenu(search = "") {
     const searchString = String(search || "").trim().toLowerCase();
+    
+    // تفريغ المحتوى الرئيسي
     container.innerHTML = "";
 
     const sections = [
@@ -70,15 +72,16 @@ function renderMenu(search = "") {
     ];
 
     let totalFilteredItems = 0;
+    let menuHTML = "";
 
     sections.forEach(section => {
-        // فلترة حسب الزر النشط (الجميع، أسماك، سلطات...)
+        // فلترة حسب القسم
         if (currentFilter !== "all" && currentFilter !== section.key) return;
 
         const rawData = menuData[section.key];
         if (!rawData || !Array.isArray(rawData)) return;
 
-        // فلترة عناصر القسم بناءً على كلمة البحث
+        // فلترة عناصر القسم بناءً على البحث
         const items = rawData.filter(item => {
             const nameAr = String(item.name_ar || "").toLowerCase();
             const nameEn = String(item.name_en || "").toLowerCase();
@@ -93,18 +96,17 @@ function renderMenu(search = "") {
 
         if (items.length === 0) return;
 
-        // حساب عدد العناصر الكلي للـ Pagination
         totalFilteredItems += items.length;
 
-        // تطبيق Pagination على العناصر
+        // تطبيق Pagination
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         const paginatedItems = items.slice(startIndex, endIndex);
 
         if (paginatedItems.length === 0) return;
 
-        // بناء الـ HTML لكل قسم
-        let html = `
+        // بناء الـ HTML الخاص بالقسم
+        menuHTML += `
         <div class="category reveal">
             <h2 class="category-title">${section.title}</h2>
             <div class="items">
@@ -131,7 +133,7 @@ function renderMenu(search = "") {
                 noImageClass = "no-image-layout"; 
             }
 
-            html += `
+            menuHTML += `
             <div class="item ${noImageClass}">
                 ${imageHtml}
                 <div class="item-content">
@@ -142,26 +144,22 @@ function renderMenu(search = "") {
                     <p>${subName}</p>
                     <div class="item-footer">
                         <span class="price">${item.price || "--"} جنيه</span>
-                        <a href="https://wa.me/201110997766?text=أود%20طلب:%20${encodeURIComponent(displayName)}" target="_blank" class="order-btn">
-                            <i class="fab class-whatsapp"></i> اطلب الآن
-                        </a>
+                        <a href="https://wa.me/201110997766?text=أود%20طلب:%20${encodeURIComponent(displayName)}" target="_blank" class="order-btn">اطلب الآن</a>
                     </div>
                 </div>
             </div>
             `;
         });
 
-        html += `
+        menuHTML += `
             </div>
         </div>
         `;
-
-        container.innerHTML += html;
     });
 
-    // حالة عدم وجود أية نتائج بحث
+    // إذا لم توجد أي نتائج
     if (totalFilteredItems === 0) {
-        container.innerHTML = `
+        menuHTML = `
             <div style="text-align:center; padding: 60px 20px; color: var(--muted);" class="reveal show">
                 <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 15px; color: var(--primary);"></i>
                 <h3 style="color:#fff;">عذراً، لم نجد أي نتائج تطابق بحثك</h3>
@@ -170,40 +168,43 @@ function renderMenu(search = "") {
         `;
     }
 
-    // رسم أزرار التنقل بين الصفحات (Pagination)
-    renderPaginationControls(totalFilteredItems);
+    // إضافة المنيو في الكونتينر
+    container.innerHTML = menuHTML;
 
-    // تشغيل أنيميشن الظهور الذكي
+    // إضافة الـ Pagination أسفل المنيو بشكل منفصل تماماً
+    if (totalFilteredItems > 0) {
+        renderPaginationControls(totalFilteredItems);
+    }
+
+    // تشغيل الأنميشن
     revealItems();
 }
 
 // =========================================
-// 3. PAGINATION CONTROLS (إنشاء أزرار التنقل)
+// 3. PAGINATION CONTROLS
 // =========================================
 
 function renderPaginationControls(totalItems) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-    // إذا كانت الصفحة الحالية أكبر من إجمالي الصفحات المتوفرة (مثلاً عند البحث)
     if (currentPage > totalPages && totalPages > 0) {
         currentPage = 1;
         renderMenu(searchInput ? searchInput.value : "");
         return;
     }
 
-    // إذا كان عدد الصفحات صفراً أو 1 لا داعي لإظهار أزرار التنقل
     if (totalPages <= 1) return;
 
     let paginationHtml = `<div class="pagination-wrapper reveal">`;
 
-    // زر الصفحة السابقة
+    // زر السابق
     paginationHtml += `
         <button class="page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})">
             <i class="fas fa-chevron-right"></i> السابق
         </button>
     `;
 
-    // أرقام الصفحات
+    // الأرقام
     paginationHtml += `<div class="page-numbers">`;
     for (let i = 1; i <= totalPages; i++) {
         paginationHtml += `
@@ -214,7 +215,7 @@ function renderPaginationControls(totalItems) {
     }
     paginationHtml += `</div>`;
 
-    // زر الصفحة التالية
+    // زر التالي
     paginationHtml += `
         <button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">
             التالي <i class="fas fa-chevron-left"></i>
@@ -223,7 +224,8 @@ function renderPaginationControls(totalItems) {
 
     paginationHtml += `</div>`;
 
-    container.innerHTML += paginationHtml;
+    // إلحاق الـ Pagination بالكونتينر بعد انتهاء العناصر
+    container.insertAdjacentHTML('beforeend', paginationHtml);
 }
 
 // دالة تغيير الصفحة
@@ -232,7 +234,6 @@ window.changePage = function(newPage) {
     const searchValue = searchInput ? searchInput.value : "";
     renderMenu(searchValue);
 
-    // التمرير لأعلى قسم المنيو بسلاسة
     const menuSection = document.getElementById("menu");
     if (menuSection) {
         menuSection.scrollIntoView({ behavior: "smooth" });
@@ -240,7 +241,7 @@ window.changePage = function(newPage) {
 };
 
 // =========================================
-// 4. REVEAL SYSTEM (أنيميشن الظهور)
+// 4. REVEAL SYSTEM
 // =========================================
 
 function revealItems() {
@@ -262,19 +263,15 @@ function revealItems() {
 }
 
 // =========================================
-// 5. SEARCH EVENTS (البحث)
+// 5. EVENTS (SEARCH, FILTER, SCROLL, MENU)
 // =========================================
 
 if (searchInput) {
     searchInput.addEventListener("input", e => {
-        currentPage = 1; // إعادة الضبط للصفحة الأولى عند كتابة بحث جديد
+        currentPage = 1;
         renderMenu(e.target.value);
     });
 }
-
-// =========================================
-// 6. FILTER BUTTONS (أزرار التصفية)
-// =========================================
 
 filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -282,26 +279,20 @@ filterButtons.forEach(btn => {
         btn.classList.add("active");
 
         currentFilter = btn.dataset.filter;
-        currentPage = 1; // إعادة الضبط للصفحة الأولى عند تغيير القسم
+        currentPage = 1;
 
         const searchValue = searchInput ? searchInput.value : "";
         renderMenu(searchValue);
     });
 });
 
-// =========================================
-// 7. SCROLL TITLES & NAVBAR
-// =========================================
-
 window.addEventListener("scroll", () => {
-    // أنيميشن العناوين عند السكرول
     document.querySelectorAll(".title").forEach(el => {
         if (el.getBoundingClientRect().top < window.innerHeight - 100) {
             el.classList.add("show");
         }
     });
 
-    // الهيدر والـ Navbar عند السكرول
     const nav = document.querySelector("nav");
     if (nav) {
         if (window.scrollY > 80)
@@ -310,10 +301,6 @@ window.addEventListener("scroll", () => {
             nav.classList.remove("scrolled");
     }
 });
-
-// =========================================
-// 8. MOBILE MENU TOGGLE
-// =========================================
 
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.links');
