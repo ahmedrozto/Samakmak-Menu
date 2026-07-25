@@ -681,7 +681,90 @@ header::after {
     border: 1px solid rgba(0, 188, 212, 0.3);
 }
 
-/* 11. SKELETON LOADING
+/* 11. PAGINATION STYLING (التحكم بالصفحات - جديد)
+========================================= */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 50px;
+    padding: 15px;
+    direction: rtl;
+}
+
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: var(--white);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.page-btn:hover:not(:disabled) {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #111;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.35);
+}
+
+.page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    border-color: transparent;
+}
+
+.page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-num {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.page-num:hover {
+    color: var(--white);
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.page-num.active {
+    background: linear-gradient(45deg, var(--gold), #ffdb6d);
+    color: #111;
+    border-color: var(--gold);
+    font-weight: 800;
+    box-shadow: 0 6px 18px rgba(255, 193, 7, 0.35);
+    transform: scale(1.08);
+}
+
+/* 12. SKELETON LOADING
 ========================================= */
 .skeleton-category {
     display: grid;
@@ -697,7 +780,7 @@ header::after {
     border-radius: 22px;
 }
 
-/* 12. BRANCHES SECTION
+/* 13. BRANCHES SECTION
 ========================================= */
 .branches {
     display: grid;
@@ -747,46 +830,40 @@ header::after {
 .branch a:hover {
     color: var(--gold);
 }
-/* =========================================
-   تعديل ألوان أزرار الـ Location والـ Facebook
-========================================= */
 
-/* 1. جعل أزرار الـ Location باللون الأبيض بالكامل */
+/* تعديل ألوان أزرار الـ Location والـ Facebook */
 .branch .loc-btn {
-    background: #ffffff !important; /* خلفية بيضاء */
-    color: #111111 !important; /* نص أسود مريح للعين */
+    background: #ffffff !important;
+    color: #111111 !important;
     border: 1px solid #ffffff;
     box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
     transition: var(--transition);
 }
 
-/* تأثير تمرير الماوس فوق زر الـ Location */
 .branch .loc-btn:hover {
-    background: transparent !important; /* خلفية شفافة */
-    color: #ffffff !important; /* النص يتحول للأبيض */
-    border-color: #ffffff; /* بقاء الإطار أبيض */
+    background: transparent !important;
+    color: #ffffff !important;
+    border-color: #ffffff;
     transform: translateY(-4px);
     box-shadow: 0 12px 25px rgba(255, 255, 255, 0.2);
 }
 
-
-/* 2. جعل زر الـ Facebook باللون الأزرق الرسمي */
 #contact .btn {
-    background: rgba(24, 119, 242, 0.1) !important; /* خلفية زجاجية زرقاء خفيفة */
-    border: 1px solid rgba(24, 119, 242, 0.4) !important; /* إطار أزرق شبه شفاف */
-    color: #1877F2 !important; /* لون النص والأيقونة بالأزرق */
-    box-shadow: none !important; /* إلغاء ظل الزر الأخضر الافتراضي */
+    background: rgba(24, 119, 242, 0.1) !important;
+    border: 1px solid rgba(24, 119, 242, 0.4) !important;
+    color: #1877F2 !important;
+    box-shadow: none !important;
     transition: var(--transition);
 }
 
-/* تأثير تمرير الماوس فوق زر الـ Facebook */
 #contact .btn:hover {
-    background: #1877F2 !important; /* تعبئة كاملة بالأزرق */
-    color: #ffffff !important; /* النص والأيقونة يتحولان للأبيض */
+    background: #1877F2 !important;
+    color: #ffffff !important;
     box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4) !important;
     transform: translateY(-4px);
 }
-/* 13. FOOTER
+
+/* 14. FOOTER
 ========================================= */
 footer {
     margin-top: 80px;
@@ -859,23 +936,8 @@ footer {
     padding-top: 25px;
     font-size: .95rem;
 }
-/* تخصيص زر الفيسبوك باللون الأزرق الرسمي */
-#contact .btn {
-    background: rgba(24, 119, 242, 0.1); /* خلفية زجاجية زرقاء خفيفة جداً */
-    border: 1px solid rgba(24, 119, 242, 0.4); /* إطار أزرق شبه شفاف */
-    color: #1877F2 !important; /* لون النص والأيقونة بالأزرق الرسمي */
-    transition: var(--transition);
-}
 
-/* تأثير رائع عند تمرير الماوس فوق الزر */
-#contact .btn:hover {
-    background: #1877F2 !important; /* تعبئة الزر بالكامل بالأزرق */
-    color: #fff !important; /* تحول النص والأيقونة للون الأبيض */
-    box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4); /* توهج أزرق ناعم */
-    transform: translateY(-4px);
-}
-
-/* 14. UTILITIES (WHATSAPP BUTTON)
+/* 15. UTILITIES (WHATSAPP BUTTON)
 ========================================= */
 .whatsapp {
     position: fixed;
@@ -906,7 +968,7 @@ footer {
     animation: ripple 2s infinite;
 }
 
-/* 15. KEYFRAMES ANIMATIONS
+/* 16. KEYFRAMES ANIMATIONS
 ========================================= */
 @keyframes ripple {
     0% { transform: scale(1); opacity: 1; }
@@ -937,9 +999,8 @@ footer {
     100% { background-position: -200% 0; }
 }
 
-
 /* ==========================================================================
-   16. MEDIA QUERIES (RESPONSIVE SYSTEM)
+   17. MEDIA QUERIES (RESPONSIVE SYSTEM)
    ========================================================================== */
 
 /* --- LARGE SCREEN (1200px) --- */
@@ -958,7 +1019,6 @@ footer {
 
 /* --- PHONES (768px) --- */
 @media (max-width: 768px) {
-    /* Navbar Adjustment */
     nav { 
         height: 70px !important; 
         padding: 0 5% !important;
@@ -995,12 +1055,10 @@ footer {
     .links a { font-size: 20px; width: 100%; text-align: center; }
     .links .nav-btn { width: 100%; text-align: center; }
 
-    /* Hamburger Active Motion */
     .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--primary); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; transform: scale(0); }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--primary); }
 
-    /* Content & Layout Adjustments */
     .logo { height: 48px !important; }
     .hero { width: 92%; }
     .hero img { width: 120px; }
@@ -1014,13 +1072,11 @@ footer {
     .footer-grid, .branches { grid-template-columns: 1fr; }
     .whatsapp { width: 60px; height: 60px; font-size: 26px; }
 
-    /* Cards Layout Reform */
     .items {
         grid-template-columns: 1fr !important; 
         gap: 20px;
     }
 
-    /* Filter Buttons Carousel on Mobile */
     .categories {
         gap: 10px;
         margin-bottom: 35px;
@@ -1039,7 +1095,6 @@ footer {
         font-size: 0.9rem;
     }
 
-    /* Search Box adjustment */
     .search-box {
         width: 95%;
         margin-bottom: 25px;
@@ -1051,6 +1106,21 @@ footer {
     .search-box .search-icon {
         right: 18px;
         font-size: 1rem;
+    }
+
+    /* Responsive adjustment for Pagination */
+    .pagination-wrapper {
+        gap: 8px;
+        padding: 10px 0;
+    }
+    .page-btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+    .page-num {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
     }
 }
 
@@ -1064,7 +1134,6 @@ footer {
     .branch { padding: 20px; }
     footer { padding: 50px 20px 25px; }
 
-    /* Fix overlay overlap on tiny screens for card footers */
     .item-footer {
         flex-direction: row !important; 
         justify-content: space-between !important;
