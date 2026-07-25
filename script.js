@@ -1,9 +1,9 @@
 // =========================================
-// SAMAKMAK MENU - JavaScript Core v2.3 (Updated)
+// SAMAKMAK MENU - JavaScript Core v2.4 (Fixed)
 // =========================================
 
 const container = document.getElementById("menuContainer");
-const paginationWrapper = document.getElementById("paginationWrapper"); // تمت إضافة حاوية الصفحات
+const paginationWrapper = document.getElementById("paginationWrapper");
 const searchInput = document.getElementById("searchInput");
 const filterButtons = document.querySelectorAll(".filter");
 
@@ -15,7 +15,7 @@ let menuData = {
     drinks: []
 };
 
-// جعل قسم "الأسماك" هو الافتراضي ليتطابق مع زر الـ HTML النشط
+// جعل قسم "الأسماك" هو الافتراضي
 let currentFilter = "fish"; 
 let currentPage = 1;
 const itemsPerPage = 8;
@@ -41,7 +41,6 @@ fetch("menu.json")
             drinks: data.drinks || []
         };
 
-        // عرض قائمة الأسماك مباشرة عند فتح الموقع
         renderMenu(); 
     })
     .catch(err => {
@@ -64,7 +63,6 @@ fetch("menu.json")
 function renderMenu(search = "") {
     const searchString = String(search || "").trim().toLowerCase();
     
-    // تفريغ حاوية الكروت وحاوية الصفحات لمنع التكرار
     container.innerHTML = "";
     if(paginationWrapper) paginationWrapper.innerHTML = ""; 
 
@@ -79,13 +77,12 @@ function renderMenu(search = "") {
     let menuHTML = "";
 
     sections.forEach(section => {
-        // فلترة حسب القسم المختار (أو عرض الكل إذا كان currentFilter = 'all' في حالة البحث الشامل)
-        if (currentFilter !== "all" && currentFilter !== section.key) return;
+        // إذا كان هناك بحث نشط، ابحث في الكل، وإلا اتبع الفلتر المحدد
+        if (searchString === "" && currentFilter !== "all" && currentFilter !== section.key) return;
 
         const rawData = menuData[section.key];
         if (!rawData || !Array.isArray(rawData)) return;
 
-        // فلترة عناصر القسم بناءً على البحث
         const items = rawData.filter(item => {
             const nameAr = String(item.name_ar || "").toLowerCase();
             const nameEn = String(item.name_en || "").toLowerCase();
@@ -102,14 +99,12 @@ function renderMenu(search = "") {
 
         totalFilteredItems += items.length;
 
-        // تطبيق Pagination
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         const paginatedItems = items.slice(startIndex, endIndex);
 
         if (paginatedItems.length === 0) return;
 
-        // بناء الـ HTML للكروت
         menuHTML += `
         <div class="category reveal show">
             <h2 class="category-title">${section.title}</h2>
@@ -161,7 +156,6 @@ function renderMenu(search = "") {
         `;
     });
 
-    // حالة عدم وجود نتائج عند البحث
     if (totalFilteredItems === 0) {
         menuHTML = `
             <div style="text-align:center; padding: 60px 20px; color: var(--muted);" class="reveal show">
@@ -174,7 +168,6 @@ function renderMenu(search = "") {
 
     container.innerHTML = menuHTML;
 
-    // إضافة أزرار الصفحات في الحاوية المخصصة لها بالأسفل
     if (totalFilteredItems > 0) {
         renderPaginationControls(totalFilteredItems);
     }
@@ -183,7 +176,7 @@ function renderMenu(search = "") {
 }
 
 // =========================================
-// 3. PAGINATION CONTROLS (تم حل مشكلة التكرار)
+// 3. PAGINATION CONTROLS
 // =========================================
 
 function renderPaginationControls(totalItems) {
@@ -221,7 +214,6 @@ function renderPaginationControls(totalItems) {
         </button>
     `;
 
-    // وضع الأزرار داخل حاوية الصفحات الفارغة لتجنب أي تداخل
     paginationWrapper.innerHTML = paginationHtml;
 }
 
@@ -237,7 +229,7 @@ window.changePage = function(newPage) {
 };
 
 // =========================================
-// 4. REVEAL SYSTEM (تأثيرات الظهور)
+// 4. REVEAL SYSTEM
 // =========================================
 
 function revealItems() {
@@ -265,13 +257,13 @@ function revealItems() {
 if (searchInput) {
     searchInput.addEventListener("input", e => {
         currentPage = 1;
+        const val = e.target.value.trim();
         
-        // ميزة إضافية: إذا قام بالبحث، نجعل الفلتر يبحث في كل الأقسام لضمان إيجاد الوجبة
-        if (e.target.value.trim() !== "") {
-            currentFilter = "all";
-            filterButtons.forEach(b => b.classList.remove("active")); // إزالة التظليل عن الأزرار
+        if (val !== "") {
+            // أثناء البحث نلغي التحديد عن الأزرار مؤقتاً ليبحث في كل الأقسام
+            filterButtons.forEach(b => b.classList.remove("active"));
         } else {
-            // إذا مسح البحث، نعود للفلتر الأول (أسماك)
+            // إذا تم مسح البحث، يعود النظام تلقائياً لقسم الأسماك وتفعيل زره
             currentFilter = "fish";
             filterButtons.forEach(b => {
                 b.classList.remove("active");
@@ -279,17 +271,17 @@ if (searchInput) {
             });
         }
         
-        renderMenu(e.target.value);
+        renderMenu(val);
     });
 }
 
 filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-        // تفعيل الزر المضغوط
+        // تفعيل الزر الذي تم الضغظ عليه حصراً وإلغاء الباقي
         filterButtons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
 
-        // تفريغ مربع البحث عند التنقل بين الفلاتر
+        // تفريغ مربع البحث تماماً عند الضغط على أي زر تصنيف لضمان العمل السليم
         if(searchInput) searchInput.value = "";
 
         currentFilter = btn.dataset.filter;
