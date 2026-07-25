@@ -24,15 +24,16 @@
 
         <div class="links">
             <a href="#menu">المنيو</a>
+            <a href="#branches">فروعنا</a>
             <a href="#contact">تواصل</a>
             <a href="https://wa.me/201110997766" class="nav-btn">اطلب الآن</a>
-            
-            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
+
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <!-- Hero Section -->
@@ -78,24 +79,18 @@
                 <input type="text" id="searchInput" placeholder="ابحث عن وجبتك المفضلة (سمك، جمبري، شوربة...)...">
             </div>
 
-            <!-- فلاتر المنيو (تم حذف زر الكل وتفعيل قسم الأسماك كافتراضي) -->
+            <!-- فلاتر المنيو (بدون تفعيل افتراضي لأي زر لتبدأ القائمة فارغة) -->
             <div class="categories">
-                <button class="filter active" data-filter="fish">🐟 أسماك</button>
+                <button class="filter" data-filter="fish">🐟 أسماك</button>
                 <button class="filter" data-filter="side">🍤 أطباق جانبية</button>
                 <button class="filter" data-filter="salads">🥗 سلطات</button>
                 <button class="filter" data-filter="drinks">🥤 مشروبات</button>
             </div>
 
-            <!-- حاوية عرض كروت المنيو -->
-            <div id="menuContainer">
-                <div class="skeleton-category">
-                    <div class="skeleton-card"></div>
-                    <div class="skeleton-card"></div>
-                    <div class="skeleton-card"></div>
-                </div>
-            </div>
+            <!-- حاوية عرض كروت المنيو (تبدأ فارغة تماماً لكي يتولى الجافاسكريبت وضع رسالة الترحيب) -->
+            <div id="menuContainer"></div>
 
-            <!-- أزرار التحكم في الصفحات (تم تفريغها لمنع التكرار) -->
+            <!-- أزرار التحكم في الصفحات (Pagination) -->
             <div class="pagination-wrapper" id="paginationWrapper"></div>
 
         </div>
