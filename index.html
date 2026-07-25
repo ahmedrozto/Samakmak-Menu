@@ -1,314 +1,198 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-  
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سمكمك | مطعم مأكولات بحرية</title>
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سمكمك | مطعم مأكولات بحرية</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- CSS Style Sheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-
-    <a href="#">
-        <img src="images/logo.png" class="logo" alt="Samakmak Logo">
-    </a>
-
-    <div class="links">
-
-        <a href="#menu">المنيو</a>
-
-        <a href="#contact">تواصل</a>
-
-        <a href="https://wa.me/201110997766"
-        class="nav-btn">
-
-            اطلب الآن
-
+    <!-- Header / Navbar -->
+    <nav>
+        <a href="#">
+            <img src="images/logo.png" class="logo" alt="Samakmak Logo">
         </a>
-<button class="menu-toggle" id="mobile-menu">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
-    </div>
 
-</nav>
+        <div class="links">
+            <a href="#menu">المنيو</a>
+            <a href="#contact">تواصل</a>
+            <a href="https://wa.me/201110997766" class="nav-btn">اطلب الآن</a>
+            
+            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-<header>
+    <!-- Hero Section -->
+    <header>
+        <div class="overlay"></div>
 
-    <div class="overlay"></div>
+        <div class="hero">
+            <img src="images/logo.png" alt="سمكمك">
+            <h1>
+                أهلاً بكم في
+                <span>مطعم سمكمك</span>
+            </h1>
+            <p>
+                منذ عام 1982 نقدم لكم أجود أنواع الأسماك والمأكولات البحرية الطازجة يومياً، 
+                بأفضل جودة وأفضل مذاق.
+            </p>
 
-    <div class="hero">
-
-        <img src="images/logo.png" alt="سمكمك">
-
-        <h1>
-
-            أهلاً بكم في
-
-            <span>مطعم سمكمك</span>
-
-        </h1>
-
-        <p>
-
-            منذ عام 1982 نقدم لكم أجود أنواع الأسماك
-            والمأكولات البحرية الطازجة يومياً،
-            بأفضل جودة وأفضل مذاق.
-
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#menu" class="btn">
-
-                <i class="fa-solid fa-utensils"></i>
-
-                استعرض المنيو
-
-            </a>
-
-            <a href="https://wa.me/201110997766"
-
-            class="btn-outline">
-
-                <i class="fab fa-whatsapp"></i>
-
-                اطلب الآن
-
-            </a>
-
+            <div class="hero-buttons">
+                <a href="#menu" class="btn">
+                    <i class="fa-solid fa-utensils"></i>
+                    استعرض المنيو
+                </a>
+                <a href="https://wa.me/201110997766" class="btn-outline" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الآن
+                </a>
+            </div>
         </div>
 
-    </div>
-
-    <div class="scroll-down">
-
-        <i class="fa-solid fa-angle-down"></i>
-
-    </div>
-
-</header>
-
-<section id="menu">
-<div class="container">
-
-<h2 class="title">
-
-قائمة الطعام
-
-</h2>
-
-<!-- شريط البحث المطور -->
-<div class="search-box">
-    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-    <input type="text" id="searchInput" placeholder="ابحث عن وجبتك المفضلة (سمك، جمبري، شوربة...)...">
-</div>
-
-<div class="categories">
-<button class="filter active" data-filter="all">الكل</button>
-<button class="filter" data-filter="fish">🐟 أسماك</button>
-<button class="filter" data-filter="side">🍤 أطباق جانبية</button>
-<button class="filter" data-filter="salads">🥗 سلطات</button>
-<button class="filter" data-filter="drinks">🥤 مشروبات</button>
-</div>
-
-<div id="menuContainer">
-    <div class="skeleton-category">
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-    </div>
-</div>
-</section>
-
-<section id="branches">
-
-<div class="container">
-
-<h2 class="title">
-
-فروعنا
-
-</h2>
-
-<div class="branch">
-<h3>📍 6 أكتوبر</h3>
-<p>غرب سوميد - الممشى السياحي</p>
-<p>01110997766</p>
-<p>01032122268</p>
-<p>01026436005</p>
-<p>01117444571</p>
-<a href="https://maps.app.goo.gl/4fxdEMnoD3RSEVWLA" class="btn loc-btn">Location</a>
-</div>
-
-<div class="branch">
-<h3>📍 الإسكندرية</h3>
-<p>01011170040</p>
-<p>034811560</p>
-<p>034809523</p>
-<a href="https://maps.app.goo.gl/W3SB6WnKVE9eEMks8" class="btn loc-btn">Location</a>
-</div>
-</div>
-
-</div>
-  
-</section>
-
-<section id="contact">
-
-<div class="container">
-
-<h2 class="title">
-
-تابعنا على مواقع التواصل
-
-</h2>
-
-<div style="text-align:center;">
-
-<a href="https://www.facebook.com/share/1JwjiqyzAq/"
-
-class="btn"
-
-target="_blank">
-
-<i class="fab fa-facebook-f"></i>
-
-Facebook
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<a href="https://wa.me/201110997766"
-
-class="whatsapp">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-<script src="script.js"></script>
-
-<footer>
-
-<div class="footer-grid">
-
-<div>
-
-<img src="images/logo.png"
-
-class="footer-logo"
-
-alt="logo">
-
-<p>
-
-منذ عام 1982 نقدم أفضل الأسماك
-والمأكولات البحرية الطازجة.
-
-</p>
-
-</div>
-
-<div>
-
-<h3 class="footer-title">
-
-روابط سريعة
-
-</h3>
-
-<div class="footer-links">
-
-<a href="#menu">المنيو</a>
-
-<a href="#branches">الفروع</a>
-
-<a href="#contact">تواصل معنا</a>
-
-</div>
-
-</div>
-
-<div>
-
-<h3 class="footer-title">
-
-تواصل معنا
-
-</h3>
-
-<div class="footer-contact">
-
-<span>
-
-<i class="fa-solid fa-phone"></i>
-
-01110997766
-
-</span>
-
-<span>
-
-<i class="fa-solid fa-phone"></i>
-
-01032122268
-
-</span>
-
-<span>
-
-<i class="fa-solid fa-location-dot"></i>
-
-6 أكتوبر - غرب سوميد
-
-</span>
-
-</div>
-
-<div class="footer-social">
-
-<a href="https://www.facebook.com/share/1JwjiqyzAq/">
-
-<i class="fab fa-facebook-f"></i>
-
-</a>
-
-<a href="https://wa.me/201110997766">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="copyright">
-
-© 2026 Samakmak Restaurant |
-Established Since 1982
-
-</div>
-
-</footer>
-
+        <div class="scroll-down">
+            <i class="fa-solid fa-angle-down"></i>
+        </div>
+    </header>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <h2 class="title">قائمة الطعام</h2>
+
+            <!-- شريط البحث المطور -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن وجبتك المفضلة (سمك، جمبري، شوربة...)...">
+            </div>
+
+            <!-- فلاتر المنيو -->
+            <div class="categories">
+                <button class="filter active" data-filter="all">الكل</button>
+                <button class="filter" data-filter="fish">🐟 أسماك</button>
+                <button class="filter" data-filter="side">🍤 أطباق جانبية</button>
+                <button class="filter" data-filter="salads">🥗 سلطات</button>
+                <button class="filter" data-filter="drinks">🥤 مشروبات</button>
+            </div>
+
+            <!-- حاوية عرض كروت المنيو -->
+            <div id="menuContainer">
+                <div class="skeleton-category">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </div>
+
+            <!-- أزرار التحكم في الصفحات (Pagination) -->
+            <div class="pagination-wrapper" id="paginationWrapper">
+                <button class="page-btn" id="prevBtn">
+                    <i class="fa-solid fa-chevron-right"></i> السابق
+                </button>
+                
+                <div class="page-numbers" id="pageNumbers">
+                    <!-- سيتم إضافة أرقام الصفحات هنا بـ JS -->
+                </div>
+                
+                <button class="page-btn" id="nextBtn">
+                    التالي <i class="fa-solid fa-chevron-left"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Branches Section -->
+    <section id="branches">
+        <div class="container">
+            <h2 class="title">فروعنا</h2>
+
+            <div class="branch">
+                <h3>📍 6 أكتوبر</h3>
+                <p>غرب سوميد - الممشى السياحي</p>
+                <p>01110997766</p>
+                <p>01032122268</p>
+                <p>01026436005</p>
+                <p>01117444571</p>
+                <a href="https://maps.app.goo.gl/4fxdEMnoD3RSEVWLA" class="btn loc-btn" target="_blank">Location</a>
+            </div>
+
+            <div class="branch">
+                <h3>📍 الإسكندرية</h3>
+                <p>01011170040</p>
+                <p>034811560</p>
+                <p>034809523</p>
+                <a href="https://maps.app.goo.gl/W3SB6WnKVE9eEMks8" class="btn loc-btn" target="_blank">Location</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="title">تابعنا على مواقع التواصل</h2>
+            <div style="text-align:center;">
+                <a href="https://www.facebook.com/share/1JwjiqyzAq/" class="btn" target="_blank">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/201110997766" class="whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <img src="images/logo.png" class="footer-logo" alt="logo">
+                <p>منذ عام 1982 نقدم أفضل الأسماك والمأكولات البحرية الطازجة.</p>
+            </div>
+
+            <div>
+                <h3 class="footer-title">روابط سريعة</h3>
+                <div class="footer-links">
+                    <a href="#menu">المنيو</a>
+                    <a href="#branches">الفروع</a>
+                    <a href="#contact">تواصل معنا</a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="footer-title">تواصل معنا</h3>
+                <div class="footer-contact">
+                    <span><i class="fa-solid fa-phone"></i> 01110997766</span>
+                    <span><i class="fa-solid fa-phone"></i> 01032122268</span>
+                    <span><i class="fa-solid fa-location-dot"></i> 6 أكتوبر - غرب سوميد</span>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/share/1JwjiqyzAq/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/201110997766" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2026 Samakmak Restaurant | Established Since 1982
+        </div>
+    </footer>
+
+    <!-- Main JavaScript File -->
+    <script src="script.js"></script>
 </body>
 </html>
