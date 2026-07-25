@@ -1205,3 +1205,8 @@ footer {
     .branch { padding: 18px; }
     footer { padding: 40px 15px 20px; }
 }
+/* إخفاء زر "الكل" من الفلاتر */
+.categories .filter:first-child,
+.categories .filter[data-filter="all"] {
+    display: none !important;
+}
