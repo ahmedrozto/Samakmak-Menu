@@ -1,8 +1,9 @@
 // =========================================
-// SAMAKMAK MENU - JavaScript Core v2.2
+// SAMAKMAK MENU - JavaScript Core v2.3 (Updated)
 // =========================================
 
 const container = document.getElementById("menuContainer");
+const paginationWrapper = document.getElementById("paginationWrapper"); // تمت إضافة حاوية الصفحات
 const searchInput = document.getElementById("searchInput");
 const filterButtons = document.querySelectorAll(".filter");
 
@@ -14,7 +15,8 @@ let menuData = {
     drinks: []
 };
 
-let currentFilter = "none"; // تغيير الفلتر الافتراضي حتى لا يعرض "الكل" تلقائياً
+// جعل قسم "الأسماك" هو الافتراضي ليتطابق مع زر الـ HTML النشط
+let currentFilter = "fish"; 
 let currentPage = 1;
 const itemsPerPage = 8;
 
@@ -39,8 +41,8 @@ fetch("menu.json")
             drinks: data.drinks || []
         };
 
-        // تم إلغاء renderMenu() من هنا كي لا تظهر الكروت تلقائياً عند الفتح
-        showInitialPlaceholder();
+        // عرض قائمة الأسماك مباشرة عند فتح الموقع
+        renderMenu(); 
     })
     .catch(err => {
         console.error("حدث خطأ أثناء جلب البيانات:", err);
@@ -54,35 +56,17 @@ fetch("menu.json")
         }
     });
 
-// =========================================
-// 2. INITIAL PLACEHOLDER (رسالة البداية)
-// =========================================
-
-function showInitialPlaceholder() {
-    if (!container) return;
-    container.innerHTML = `
-        <div style="text-align:center; padding: 60px 20px; color: var(--muted);" class="reveal show">
-            <i class="fas fa-utensils" style="font-size: 3.5rem; margin-bottom: 20px; color: var(--primary);"></i>
-            <h3 style="color:#fff; font-size: 1.5rem;">مرحباً بك في قائمة سمكمك! 🐟</h3>
-            <p style="margin-top: 10px; font-size: 1rem;">اختر تصنيفاً من الأعلى أو ابحث عن وجبتك المفضلة للبدء.</p>
-        </div>
-    `;
-}
 
 // =========================================
-// 3. MAIN RENDER FUNCTION
+// 2. MAIN RENDER FUNCTION
 // =========================================
 
 function renderMenu(search = "") {
     const searchString = String(search || "").trim().toLowerCase();
     
-    // إذا لم يحدد المستخدم أي قسم ولم يكتب شيئاً في البحث، اترك الرسالة الترحيبية
-    if (currentFilter === "none" && !searchString) {
-        showInitialPlaceholder();
-        return;
-    }
-
+    // تفريغ حاوية الكروت وحاوية الصفحات لمنع التكرار
     container.innerHTML = "";
+    if(paginationWrapper) paginationWrapper.innerHTML = ""; 
 
     const sections = [
         { key: "fish", title: "🐟 الأسماك", badge: "أسماك", hasImage: true },
@@ -95,8 +79,8 @@ function renderMenu(search = "") {
     let menuHTML = "";
 
     sections.forEach(section => {
-        // فلترة حسب القسم (إذا اختار "all" سيتم عرض الكل)
-        if (currentFilter !== "all" && currentFilter !== "none" && currentFilter !== section.key) return;
+        // فلترة حسب القسم المختار (أو عرض الكل إذا كان currentFilter = 'all' في حالة البحث الشامل)
+        if (currentFilter !== "all" && currentFilter !== section.key) return;
 
         const rawData = menuData[section.key];
         if (!rawData || !Array.isArray(rawData)) return;
@@ -125,9 +109,9 @@ function renderMenu(search = "") {
 
         if (paginatedItems.length === 0) return;
 
-        // بناء الـ HTML
+        // بناء الـ HTML للكروت
         menuHTML += `
-        <div class="category reveal">
+        <div class="category reveal show">
             <h2 class="category-title">${section.title}</h2>
             <div class="items">
         `;
@@ -190,7 +174,7 @@ function renderMenu(search = "") {
 
     container.innerHTML = menuHTML;
 
-    // إضافة أزرار الصفحات
+    // إضافة أزرار الصفحات في الحاوية المخصصة لها بالأسفل
     if (totalFilteredItems > 0) {
         renderPaginationControls(totalFilteredItems);
     }
@@ -199,10 +183,12 @@ function renderMenu(search = "") {
 }
 
 // =========================================
-// 4. PAGINATION CONTROLS
+// 3. PAGINATION CONTROLS (تم حل مشكلة التكرار)
 // =========================================
 
 function renderPaginationControls(totalItems) {
+    if (!paginationWrapper) return;
+    
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     if (currentPage > totalPages && totalPages > 0) {
@@ -213,9 +199,7 @@ function renderPaginationControls(totalItems) {
 
     if (totalPages <= 1) return;
 
-    let paginationHtml = `<div class="pagination-wrapper reveal">`;
-
-    paginationHtml += `
+    let paginationHtml = `
         <button class="page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})">
             <i class="fas fa-chevron-right"></i> السابق
         </button>
@@ -237,9 +221,8 @@ function renderPaginationControls(totalItems) {
         </button>
     `;
 
-    paginationHtml += `</div>`;
-
-    container.insertAdjacentHTML('beforeend', paginationHtml);
+    // وضع الأزرار داخل حاوية الصفحات الفارغة لتجنب أي تداخل
+    paginationWrapper.innerHTML = paginationHtml;
 }
 
 window.changePage = function(newPage) {
@@ -254,7 +237,7 @@ window.changePage = function(newPage) {
 };
 
 // =========================================
-// 5. REVEAL SYSTEM
+// 4. REVEAL SYSTEM (تأثيرات الظهور)
 // =========================================
 
 function revealItems() {
@@ -276,16 +259,24 @@ function revealItems() {
 }
 
 // =========================================
-// 6. EVENTS (SEARCH, FILTER, SCROLL, MENU)
+// 5. EVENTS (SEARCH, FILTER, SCROLL, MENU)
 // =========================================
 
 if (searchInput) {
     searchInput.addEventListener("input", e => {
         currentPage = 1;
         
-        // إذا بدأ المستخدم في الكتابة وهو على وضع "none"، سنحول الفلتر إلى "all" لتشمل البحث كل الأصناف
-        if (currentFilter === "none" && e.target.value.trim() !== "") {
+        // ميزة إضافية: إذا قام بالبحث، نجعل الفلتر يبحث في كل الأقسام لضمان إيجاد الوجبة
+        if (e.target.value.trim() !== "") {
             currentFilter = "all";
+            filterButtons.forEach(b => b.classList.remove("active")); // إزالة التظليل عن الأزرار
+        } else {
+            // إذا مسح البحث، نعود للفلتر الأول (أسماك)
+            currentFilter = "fish";
+            filterButtons.forEach(b => {
+                b.classList.remove("active");
+                if(b.dataset.filter === "fish") b.classList.add("active");
+            });
         }
         
         renderMenu(e.target.value);
@@ -294,14 +285,17 @@ if (searchInput) {
 
 filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
+        // تفعيل الزر المضغوط
         filterButtons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
+
+        // تفريغ مربع البحث عند التنقل بين الفلاتر
+        if(searchInput) searchInput.value = "";
 
         currentFilter = btn.dataset.filter;
         currentPage = 1;
 
-        const searchValue = searchInput ? searchInput.value : "";
-        renderMenu(searchValue);
+        renderMenu("");
     });
 });
 
