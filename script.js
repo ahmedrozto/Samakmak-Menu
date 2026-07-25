@@ -1,5 +1,5 @@
 // =========================================
-// SAMAKMAK MENU - JavaScript Core v2.1 (Fixed Layout)
+// SAMAKMAK MENU - JavaScript Core v2.2
 // =========================================
 
 const container = document.getElementById("menuContainer");
@@ -14,9 +14,9 @@ let menuData = {
     drinks: []
 };
 
-let currentFilter = "all";
+let currentFilter = "none"; // تغيير الفلتر الافتراضي حتى لا يعرض "الكل" تلقائياً
 let currentPage = 1;
-const itemsPerPage = 8; // عدد الوجبات في الصفحة الواحدة
+const itemsPerPage = 8;
 
 // =========================================
 // 1. FETCH & LOAD JSON 
@@ -39,8 +39,8 @@ fetch("menu.json")
             drinks: data.drinks || []
         };
 
-        // رسم المنيو لأول مرة
-        renderMenu();
+        // تم إلغاء renderMenu() من هنا كي لا تظهر الكروت تلقائياً عند الفتح
+        showInitialPlaceholder();
     })
     .catch(err => {
         console.error("حدث خطأ أثناء جلب البيانات:", err);
@@ -55,13 +55,33 @@ fetch("menu.json")
     });
 
 // =========================================
-// 2. MAIN RENDER FUNCTION
+// 2. INITIAL PLACEHOLDER (رسالة البداية)
+// =========================================
+
+function showInitialPlaceholder() {
+    if (!container) return;
+    container.innerHTML = `
+        <div style="text-align:center; padding: 60px 20px; color: var(--muted);" class="reveal show">
+            <i class="fas fa-utensils" style="font-size: 3.5rem; margin-bottom: 20px; color: var(--primary);"></i>
+            <h3 style="color:#fff; font-size: 1.5rem;">مرحباً بك في قائمة سمكمك! 🐟</h3>
+            <p style="margin-top: 10px; font-size: 1rem;">اختر تصنيفاً من الأعلى أو ابحث عن وجبتك المفضلة للبدء.</p>
+        </div>
+    `;
+}
+
+// =========================================
+// 3. MAIN RENDER FUNCTION
 // =========================================
 
 function renderMenu(search = "") {
     const searchString = String(search || "").trim().toLowerCase();
     
-    // تفريغ المحتوى الرئيسي
+    // إذا لم يحدد المستخدم أي قسم ولم يكتب شيئاً في البحث، اترك الرسالة الترحيبية
+    if (currentFilter === "none" && !searchString) {
+        showInitialPlaceholder();
+        return;
+    }
+
     container.innerHTML = "";
 
     const sections = [
@@ -75,8 +95,8 @@ function renderMenu(search = "") {
     let menuHTML = "";
 
     sections.forEach(section => {
-        // فلترة حسب القسم
-        if (currentFilter !== "all" && currentFilter !== section.key) return;
+        // فلترة حسب القسم (إذا اختار "all" سيتم عرض الكل)
+        if (currentFilter !== "all" && currentFilter !== "none" && currentFilter !== section.key) return;
 
         const rawData = menuData[section.key];
         if (!rawData || !Array.isArray(rawData)) return;
@@ -105,7 +125,7 @@ function renderMenu(search = "") {
 
         if (paginatedItems.length === 0) return;
 
-        // بناء الـ HTML الخاص بالقسم
+        // بناء الـ HTML
         menuHTML += `
         <div class="category reveal">
             <h2 class="category-title">${section.title}</h2>
@@ -157,7 +177,7 @@ function renderMenu(search = "") {
         `;
     });
 
-    // إذا لم توجد أي نتائج
+    // حالة عدم وجود نتائج عند البحث
     if (totalFilteredItems === 0) {
         menuHTML = `
             <div style="text-align:center; padding: 60px 20px; color: var(--muted);" class="reveal show">
@@ -168,20 +188,18 @@ function renderMenu(search = "") {
         `;
     }
 
-    // إضافة المنيو في الكونتينر
     container.innerHTML = menuHTML;
 
-    // إضافة الـ Pagination أسفل المنيو بشكل منفصل تماماً
+    // إضافة أزرار الصفحات
     if (totalFilteredItems > 0) {
         renderPaginationControls(totalFilteredItems);
     }
 
-    // تشغيل الأنميشن
     revealItems();
 }
 
 // =========================================
-// 3. PAGINATION CONTROLS
+// 4. PAGINATION CONTROLS
 // =========================================
 
 function renderPaginationControls(totalItems) {
@@ -197,14 +215,12 @@ function renderPaginationControls(totalItems) {
 
     let paginationHtml = `<div class="pagination-wrapper reveal">`;
 
-    // زر السابق
     paginationHtml += `
         <button class="page-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})">
             <i class="fas fa-chevron-right"></i> السابق
         </button>
     `;
 
-    // الأرقام
     paginationHtml += `<div class="page-numbers">`;
     for (let i = 1; i <= totalPages; i++) {
         paginationHtml += `
@@ -215,7 +231,6 @@ function renderPaginationControls(totalItems) {
     }
     paginationHtml += `</div>`;
 
-    // زر التالي
     paginationHtml += `
         <button class="page-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">
             التالي <i class="fas fa-chevron-left"></i>
@@ -224,11 +239,9 @@ function renderPaginationControls(totalItems) {
 
     paginationHtml += `</div>`;
 
-    // إلحاق الـ Pagination بالكونتينر بعد انتهاء العناصر
     container.insertAdjacentHTML('beforeend', paginationHtml);
 }
 
-// دالة تغيير الصفحة
 window.changePage = function(newPage) {
     currentPage = newPage;
     const searchValue = searchInput ? searchInput.value : "";
@@ -241,7 +254,7 @@ window.changePage = function(newPage) {
 };
 
 // =========================================
-// 4. REVEAL SYSTEM
+// 5. REVEAL SYSTEM
 // =========================================
 
 function revealItems() {
@@ -263,12 +276,18 @@ function revealItems() {
 }
 
 // =========================================
-// 5. EVENTS (SEARCH, FILTER, SCROLL, MENU)
+// 6. EVENTS (SEARCH, FILTER, SCROLL, MENU)
 // =========================================
 
 if (searchInput) {
     searchInput.addEventListener("input", e => {
         currentPage = 1;
+        
+        // إذا بدأ المستخدم في الكتابة وهو على وضع "none"، سنحول الفلتر إلى "all" لتشمل البحث كل الأصناف
+        if (currentFilter === "none" && e.target.value.trim() !== "") {
+            currentFilter = "all";
+        }
+        
         renderMenu(e.target.value);
     });
 }
