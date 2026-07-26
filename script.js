@@ -146,15 +146,30 @@ function renderMenu(search = "") {
             <div class="item ${noImageClass}">
                 ${imageHtml}
                 <div class="item-content">
-                    <div class="item-header">
-                        <h3>${displayName}</h3>
-                        ${!section.hasImage ? `<span class="badge-inline">${section.badge}</span>` : ""}
+                    ${!section.hasImage ? `
+                    <div class="no-image-content">
+                        <div class="item-header">
+                            <h3>${displayName}</h3>
+                            <span class="badge-inline">${section.badge}</span>
+                        </div>
+                        <p>${subName}</p>
+                        <div class="item-footer">
+                            <span class="price">${item.price || "--"} جنيه</span>
+                            <a href="https://wa.me/201110997766?text=أود%20طلب:%20${encodeURIComponent(displayName)}" target="_blank" class="order-btn">اطلب الآن</a>
+                        </div>
                     </div>
-                    <p>${subName}</p>
+                    ` : `
+                    <div>
+                        <div class="item-header">
+                            <h3>${displayName}</h3>
+                        </div>
+                        <p>${subName}</p>
+                    </div>
                     <div class="item-footer">
                         <span class="price">${item.price || "--"} جنيه</span>
                         <a href="https://wa.me/201110997766?text=أود%20طلب:%20${encodeURIComponent(displayName)}" target="_blank" class="order-btn">اطلب الآن</a>
                     </div>
+                    `}
                 </div>
             </div>
             `;
