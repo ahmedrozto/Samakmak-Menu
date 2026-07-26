@@ -1,5 +1,5 @@
 // =========================================
-// SAMAKMAK MENU - JavaScript Core v2.5 (With Welcome & Icon)
+// SAMAKMAK MENU - JavaScript Core v2.5 (Fixed Images & Fallbacks)
 // =========================================
 
 const container = document.getElementById("menuContainer");
@@ -130,11 +130,12 @@ function renderMenu(search = "") {
 
             if (section.hasImage) {
                 const isValidImage = item.image && item.image.trim() !== "images/fish/.jpg" && item.image.trim() !== "";
-                const imgSrc = isValidImage ? item.image : "images/no-image.jpg";
+                // استخدام اللوجو بدلاً من no-image.jpg لمنع خطأ 404
+                const imgSrc = isValidImage ? item.image : "images/logo.png";
                 
                 imageHtml = `
                 <div class="item-image">
-                    <img src="${imgSrc}" alt="${displayName}" loading="lazy">
+                    <img src="${imgSrc}" alt="${displayName}" loading="lazy" onerror="this.src='images/logo.png'">
                     <span class="badge">${section.badge}</span>
                 </div>
                 `;
