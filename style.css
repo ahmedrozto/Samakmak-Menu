@@ -1265,3 +1265,61 @@ footer {
         margin-top: auto !important;
     }
 }
+/* =========================================
+   Quick Tags / الاختصارات السريعة
+   ========================================= */
+.quick-tags {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 15px 0 30px;
+}
+
+.quick-tags .tag-title {
+    color: var(--muted, #a0aec0);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.quick-tags .filter {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color, #fff);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.quick-tags .filter:hover,
+.quick-tags .filter.active {
+    background: var(--primary, #00b4d8);
+    color: #fff;
+    border-color: var(--primary, #00b4d8);
+    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
+}
+
+/* تنسيق شريط البحث ليتكامل مع الاختصارات */
+.search-box {
+    margin-bottom: 10px !important;
+}
+
+/* استجابة الموبايل */
+@media (max-width: 600px) {
+    .quick-tags {
+        gap: 6px;
+    }
+    .quick-tags .tag-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .quick-tags .filter {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
