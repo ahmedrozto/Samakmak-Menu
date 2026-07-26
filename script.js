@@ -77,16 +77,6 @@ function renderMenu(search = "") {
     let totalFilteredItems = 0;
     let menuHTML = "";
 
-    // إضافة رسالة الترحيب في أعلى القائمة عند العرض الافتراضي أو عدم البحث
-    if (searchString === "" && currentFilter === "fish") {
-        menuHTML += `
-        <div class="welcome-banner reveal show" style="background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(3, 4, 94, 0.2)); border: 1px solid var(--primary); padding: 25px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
-            <h2 style="color: var(--primary); margin-bottom: 10px; font-size: 1.8rem;">🌊 أهلاً بك في مطعم سمكك (Samakmak)</h2>
-            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">نقدم لك أشهى وأفضل الأسماك الطازجة والمأكولات البحرية يومياً بأعلى جودة. اختر ما يعجبك واطلب بسهولة عبر الواتساب! 🎣</p>
-        </div>
-        `;
-    }
-
     sections.forEach(section => {
         if (searchString === "" && currentFilter !== "all" && currentFilter !== section.key) return;
 
