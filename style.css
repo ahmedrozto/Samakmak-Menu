@@ -1260,3 +1260,11 @@ footer {
         margin-top: auto !important;
     }
 }
+/* إضافة كلمة "1 كيلو" جنب السعر تلقائياً */
+.price::after {
+    content: " / 1 كيلو";
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-right: 4px; /* مسافة صغيرة بين السعر والكلمة */
+    opacity: 0.9;
+}
