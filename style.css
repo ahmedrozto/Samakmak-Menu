@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SAMAKMAK MENU - Modern CSS v2.1 (Full Complete & Mobile Optimized)
+   SAMAKMAK MENU - Modern CSS v2.2 (Full Complete & Responsive Optimized)
    ========================================================================== */
 
 /* 1. GOOGLE FONTS
@@ -228,19 +228,28 @@ nav.scrolled {
     transform-origin: center;
 }
 
-/* 6. HERO SECTION
+/* 6. HERO SECTION (Fixed & Mobile Optimized)
 ========================================= */
 header {
     position: relative;
-    height: 100vh;
-    min-height: 700px;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh; /* حل مشكلة ارتفاع شريط الموبايل */
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("images/background-head.jpg") center center/cover no-repeat;
-    animation: heroZoom 18s ease-in-out infinite alternate;
+    background: url("images/background-head.jpg") center center / cover no-repeat;
+    background-attachment: scroll; /* منع fixed لمنع التشويه على الهواتف */
+    padding: 100px 20px 60px;
 }
+
+@media (min-width: 992px) {
+    header {
+        background-attachment: fixed; /* تفعيل Parallax للشاشات الكبيرة فقط */
+    }
+}
+
 header::before {
     content: "";
     position: absolute;
@@ -381,7 +390,7 @@ header::after {
     position: relative;
     max-width: 550px;
     width: 100%;
-    margin: 0 auto 35px auto;
+    margin: 0 auto 10px auto !important;
     z-index: 5;
 }
 .search-box input {
@@ -422,7 +431,44 @@ header::after {
     transform: translateY(-50%) scale(1.1);
 }
 
-/* 8. FILTER BUTTONS
+/* 8. QUICK TAGS / الاختصارات السريعة
+========================================= */
+.quick-tags {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 15px 0 30px;
+}
+
+.quick-tags .tag-title {
+    color: var(--muted, #a0aec0);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.quick-tags .filter {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color, #fff);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.quick-tags .filter:hover,
+.quick-tags .filter.active {
+    background: var(--primary, #00b4d8);
+    color: #fff;
+    border-color: var(--primary, #00b4d8);
+    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
+}
+
+/* 9. FILTER BUTTONS
 ========================================= */
 .categories {
     display: flex;
@@ -465,21 +511,14 @@ header::after {
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 10px 25px rgba(255, 193, 7, 0.4);
 }
-.categories .filter::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: 0.6s;
-}
-.categories .filter:hover::before {
-    left: 100%;
+
+/* إخفاء زر "الكل" من الفلاتر إن وجد */
+.categories .filter:first-child,
+.categories .filter[data-filter="all"] {
+    display: none !important;
 }
 
-/* 9. MENU ITEMS GRID & CARDS
+/* 10. MENU ITEMS GRID & CARDS
 ========================================= */
 #menu {
     position: relative;
@@ -589,16 +628,17 @@ header::after {
 
 .item-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 20px;
+    width: 100%;
 }
 
 .price {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 18px;
+    padding: 8px 24px;
     border-radius: 50px;
     background: linear-gradient(45deg, #f7b500, #ffd54f);
     color: #111;
@@ -614,49 +654,7 @@ header::after {
     color: var(--gold);
 }
 
-.order-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: 50px;
-    background: var(--secondary);
-    color: #fff;
-    font-size: .9rem;
-    font-weight: 700;
-    transition: .35s;
-}
-.order-btn:hover {
-    transform: translateY(-3px);
-    background: #18c05d;
-}
-
-.zoom {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,.35);
-    opacity: 0;
-    transition: .4s;
-}
-.zoom i {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #fff;
-    color: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
-}
-.item:hover .zoom {
-    opacity: 1;
-}
-
-/* 10. NO IMAGE CARDS STYLE (السلطات والمشروبات)
+/* 11. NO IMAGE CARDS STYLE (السلطات والمشروبات)
 ========================================= */
 .no-image-layout {
     min-height: 150px;
@@ -681,7 +679,7 @@ header::after {
     border: 1px solid rgba(0, 188, 212, 0.3);
 }
 
-/* 11. PAGINATION STYLING (التحكم بالصفحات - جديد)
+/* 12. PAGINATION STYLING
 ========================================= */
 .pagination-wrapper {
     display: flex;
@@ -764,7 +762,7 @@ header::after {
     transform: scale(1.08);
 }
 
-/* 12. SKELETON LOADING
+/* 13. SKELETON LOADING
 ========================================= */
 .skeleton-category {
     display: grid;
@@ -780,7 +778,7 @@ header::after {
     border-radius: 22px;
 }
 
-/* 13. BRANCHES SECTION
+/* 14. BRANCHES SECTION
 ========================================= */
 .branches {
     display: grid;
@@ -831,7 +829,6 @@ header::after {
     color: var(--gold);
 }
 
-/* أزرار الـ Location والـ Facebook */
 .branch .loc-btn {
     background: #ffffff !important;
     color: #111111 !important;
@@ -863,7 +860,7 @@ header::after {
     transform: translateY(-4px);
 }
 
-/* 14. FOOTER
+/* 15. FOOTER
 ========================================= */
 footer {
     margin-top: 80px;
@@ -937,7 +934,7 @@ footer {
     font-size: .95rem;
 }
 
-/* 15. UTILITIES (WHATSAPP BUTTON)
+/* 16. UTILITIES (WHATSAPP BUTTON)
 ========================================= */
 .whatsapp {
     position: fixed;
@@ -968,7 +965,7 @@ footer {
     animation: ripple 2s infinite;
 }
 
-/* 16. KEYFRAMES ANIMATIONS
+/* 17. KEYFRAMES ANIMATIONS
 ========================================= */
 @keyframes ripple {
     0% { transform: scale(1); opacity: 1; }
@@ -990,17 +987,13 @@ footer {
     0%, 100% { transform: translate(-50%,0); }
     50% { transform: translate(-50%,12px); }
 }
-@keyframes heroZoom {
-    from { background-size: 100%; }
-    to { background-size: 112%; }
-}
 @keyframes loadingSkeleton {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
 
 /* ==========================================================================
-   17. MEDIA QUERIES (RESPONSIVE SYSTEM)
+   18. MEDIA QUERIES (RESPONSIVE SYSTEM)
    ========================================================================== */
 
 /* --- LARGE SCREEN (1200px) --- */
@@ -1020,6 +1013,12 @@ footer {
 /* --- PHONES & SMALL SCREENS (تنسيق الموبايل المطور لـ 3 كروت بالعرض) --- */
 @media (max-width: 768px) {
     section { padding: 50px 10px; }
+
+    header {
+        padding: 120px 15px 40px;
+        min-height: 85vh;
+        min-height: 85dvh;
+    }
 
     nav { 
         height: 70px !important; 
@@ -1064,8 +1063,8 @@ footer {
     .logo { height: 48px !important; }
     .hero { width: 92%; }
     .hero img { width: 120px; }
-    .hero h1 { font-size: 2.3rem; }
-    .hero p { font-size: 1rem; line-height: 1.8; }
+    .hero h1 { font-size: 2.1rem; }
+    .hero p { font-size: 0.95rem; line-height: 1.8; }
     .hero-buttons { flex-direction: column; }
     .btn, .btn-outline { width: 100%; justify-content: center; }
     .title { font-size: 2rem; }
@@ -1073,9 +1072,7 @@ footer {
     .footer-grid, .branches { grid-template-columns: 1fr; }
     .whatsapp { width: 55px; height: 55px; font-size: 24px; left: 15px; bottom: 15px; }
 
-    /* =========================================
-       ضبط الشبكة لتعرض 3 كروت بالعرض على الموبايل
-       ========================================= */
+    /* ضبط الشبكة لتعرض 3 كروت بالعرض على الموبايل */
     .items {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
@@ -1122,10 +1119,9 @@ footer {
         text-overflow: ellipsis;
     }
 
-    /* تعديل السعر وزر الطلب ليتناسبا مع العرض الصغير */
     .item-footer {
         flex-direction: column !important;
-        align-items: stretch !important;
+        align-items: center !important;
         gap: 4px !important;
         margin-top: 4px !important;
         padding-top: 4px !important;
@@ -1138,14 +1134,6 @@ footer {
         width: 100% !important;
         text-align: center !important;
         box-shadow: none !important;
-    }
-
-    .order-btn {
-        font-size: 0.62rem !important;
-        padding: 3px 0 !important;
-        width: 100% !important;
-        justify-content: center !important;
-        border-radius: 20px !important;
     }
 
     /* أزرة الفلتر والبحث للموبايل */
@@ -1165,6 +1153,19 @@ footer {
     .categories .filter {
         padding: 8px 16px;
         font-size: 0.85rem;
+    }
+
+    .quick-tags {
+        gap: 6px;
+    }
+    .quick-tags .tag-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .quick-tags .filter {
+        padding: 6px 12px;
+        font-size: 0.8rem;
     }
 
     .search-box {
@@ -1204,12 +1205,6 @@ footer {
     .title { font-size: 1.5rem; }
     .branch { padding: 18px; }
     footer { padding: 40px 15px 20px; }
-}
-
-/* إخفاء زر "الكل" من الفلاتر إن وجد */
-.categories .filter:first-child,
-.categories .filter[data-filter="all"] {
-    display: none !important;
 }
 
 /* --- تعديلات خاصة بكروت السلطات والمشروبات بدون صور في العرض المضغوط (3 كروت) --- */
@@ -1263,63 +1258,5 @@ footer {
 
     .item.no-image-layout .item-footer {
         margin-top: auto !important;
-    }
-}
-/* =========================================
-   Quick Tags / الاختصارات السريعة
-   ========================================= */
-.quick-tags {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin: 15px 0 30px;
-}
-
-.quick-tags .tag-title {
-    color: var(--muted, #a0aec0);
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-.quick-tags .filter {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-color, #fff);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-.quick-tags .filter:hover,
-.quick-tags .filter.active {
-    background: var(--primary, #00b4d8);
-    color: #fff;
-    border-color: var(--primary, #00b4d8);
-    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
-}
-
-/* تنسيق شريط البحث ليتكامل مع الاختصارات */
-.search-box {
-    margin-bottom: 10px !important;
-}
-
-/* استجابة الموبايل */
-@media (max-width: 600px) {
-    .quick-tags {
-        gap: 6px;
-    }
-    .quick-tags .tag-title {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 5px;
-    }
-    .quick-tags .filter {
-        padding: 6px 12px;
-        font-size: 0.8rem;
     }
 }
