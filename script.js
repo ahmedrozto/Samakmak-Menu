@@ -120,7 +120,6 @@ function renderMenu(search = "") {
 
             if (section.hasImage) {
                 const isValidImage = item.image && item.image.trim() !== "images/fish/.jpg" && item.image.trim() !== "";
-                // استخدام اللوجو بدلاً من no-image.jpg لمنع خطأ 404
                 const imgSrc = isValidImage ? item.image : "images/logo.png";
                 
                 imageHtml = `
@@ -146,7 +145,6 @@ function renderMenu(search = "") {
                         <p>${subName}</p>
                         <div class="item-footer">
                             <span class="price">${item.price || "--"} جنيه</span>
-                            <a href="https://wa.me/201110997766?text=أود%20طلب:%20${encodeURIComponent(displayName)}" target="_blank" class="order-btn">اطلب الآن</a>
                         </div>
                     </div>
                     ` : `
@@ -158,7 +156,6 @@ function renderMenu(search = "") {
                     </div>
                     <div class="item-footer">
                         <span class="price">${item.price || "--"} جنيه</span>
-                        <a href="https://wa.me/201110997766?text=أود%20طلب:%20${encodeURIComponent(displayName)}" target="_blank" class="order-btn">اطلب الآن</a>
                     </div>
                     `}
                 </div>
