@@ -1260,11 +1260,19 @@ footer {
         margin-top: auto !important;
     }
 }
-/* إضافة كلمة "1 كيلو" جنب السعر تلقائياً */
-.price::after {
+/* إضافتها فقط للأسعار الموجودة داخل قسم الأسماك */
+#fish .price::after {
     content: " / 1 كيلو";
     font-size: 0.85em;
     font-weight: 600;
-    margin-right: 4px; /* مسافة صغيرة بين السعر والكلمة */
+    margin-right: 4px;
     opacity: 0.9;
+}
+
+/* ضبط النص على الشاشات الصغيرة للموبايل */
+@media (max-width: 768px) {
+    #fish .price::after {
+        font-size: 0.7em;
+        margin-right: 2px;
+    }
 }
